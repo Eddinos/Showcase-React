@@ -1,0 +1,8 @@
+h1 {
+  background-color: purple;
+  color: white;
+}
+
+h2 {
+  @extend h1
+}
