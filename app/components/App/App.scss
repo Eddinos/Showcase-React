@@ -1,0 +1,17 @@
+h1 {
+
+  color: white;
+  vertical-align: top;
+}
+
+h2 {
+  @extend h1;
+  padding: 0 0 50px;
+}
+
+.content {
+  background-color: purple;
+  font-family: 'LatoWeb';
+  font-size: 3em;
+  text-align: center;
+}
