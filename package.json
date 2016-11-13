@@ -2,11 +2,12 @@
   "name": "showcase",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "tryme",
     "build": "webpack",
-    "start": "start http://localhost:3000/ && webpack-dev-server --hot --port 3000"
+    "start": "node server.js",
+    "postinstall": "webpack -p --config webpack.prod.config.js"
   },
   "author": "Eddine Djerboua",
   "license": "ISC",
