@@ -39,14 +39,12 @@
 //   ]
 // };
 
-
-
 var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
   entry: [
-    __dirname + '/app/index.js'
+    './app/index.js'
   ],
   module: {
     loaders: [
@@ -55,7 +53,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: [ 'es2015', 'react', 'react-hmre' ]
+          presets: [ 'es2015', 'react' ]
         }
       },
       {
@@ -77,7 +75,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './build',
+    contentBase: './dist',
     hot: true
   },
   plugins: [

@@ -7,7 +7,9 @@
     "test": "tryme",
     "build": "webpack",
     "start": "node server.js",
-    "postinstall": "webpack -p --config webpack.prod.config.js"
+    "postinstall": "webpack -p --config webpack.prod.config.js",
+    "serve": "start http://localhost:3000/ && webpack-dev-server --progress --inline --hot --port 3000"
+
   },
   "author": "Eddine Djerboua",
   "license": "ISC",
@@ -28,7 +30,7 @@
     "url-loader": "^0.5.7",
     "html-webpack-plugin": "^2.24.1"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "babel-preset-react-hmre": "^1.1.1",
     "webpack-dev-server": "^1.16.2"
   }
