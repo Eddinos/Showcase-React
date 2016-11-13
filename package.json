@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tryme",
     "build": "webpack",
-    "start": "start http://localhost:3000/ && webpack-dev-server --progress --inline --hot --port 3000"
+    "start": "start http://localhost:3000/ && webpack-dev-server --hot --port 3000"
   },
   "author": "Eddine Djerboua",
   "license": "ISC",
