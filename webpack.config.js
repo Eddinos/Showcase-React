@@ -41,6 +41,14 @@
 
 var webpack = require('webpack');
 var path = require('path');
+var HTMLWebpackPlugin = require('html-webpack-plugin');
+
+
+var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+  template: __dirname + '/app/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
 module.exports = {
   entry: [
@@ -53,7 +61,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: [ 'es2015', 'react' ]
+          presets: [ 'es2015', 'react', 'react-hmre' ]
         }
       },
       {
@@ -67,7 +75,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', 'html']
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -81,6 +89,8 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    HTMLWebpackPluginConfig
   ]
 };
