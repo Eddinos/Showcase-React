@@ -1,8 +1,10 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
+import { render } from 'react-dom'
 import App from './components/App/App';
+import routes from './routes'
+import { Router, browserHistory } from 'react-router'
 
-ReactDOM.render(
-  <App />,
+render(
+  <Router routes={routes} history={browserHistory}/>,
   document.getElementById('root')
 );
