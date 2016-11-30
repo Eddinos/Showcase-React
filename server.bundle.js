@@ -74,10 +74,6 @@
 
 	app.use(express.static(path.join(__dirname, 'dist')));
 
-	app.get('/', function (request, response) {
-	  response.sendFile(__dirname + '/dist/index.html');
-	});
-
 	app.get('*', function (req, res) {
 	  match({ routes: routes, location: req.url }, function (err, redirect, props) {
 	    // in here we can make some decisions all at once

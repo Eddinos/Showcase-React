@@ -21,10 +21,6 @@ if(process.env.NODE_ENV !== 'production') {
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/dist/index.html')
-});
-
 app.get('*', function (req, res) {
   match({ routes: routes, location: req.url }, (err, redirect, props) => {
     // in here we can make some decisions all at once
@@ -53,7 +49,7 @@ function renderPage(appHtml) {
     <meta charset=utf-8/>
     <title>My First React Router App</title>
     <link rel=stylesheet href=/index.css>
-    <div id=app>${appHtml}</div>
+    <div id=root>${appHtml}</div>
     <script src="/bundle.js"></script>
    `
 }
