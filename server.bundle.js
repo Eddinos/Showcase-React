@@ -61,16 +61,16 @@
 	var compression = __webpack_require__(5);
 
 	// using webpack-dev-server and middleware in development environment
-	if (process.env.NODE_ENV !== 'production') {
-	  var webpackDevMiddleware = __webpack_require__(6);
-	  var webpackHotMiddleware = __webpack_require__(7);
-	  var webpack = __webpack_require__(8);
-	  var config = __webpack_require__(9);
-	  var compiler = webpack(config);
-
-	  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-	  app.use(webpackHotMiddleware(compiler));
-	}
+	// if(process.env.NODE_ENV !== 'production') {
+	//   var webpackDevMiddleware = require('webpack-dev-middleware');
+	//   var webpackHotMiddleware = require('webpack-hot-middleware');
+	//   var webpack = require('webpack');
+	//   var config = require('./webpack.config');
+	//   var compiler = webpack(config);
+	//
+	//   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+	//   app.use(webpackHotMiddleware(compiler));
+	// }
 
 	app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -96,7 +96,7 @@
 	});
 
 	function renderPage(appHtml) {
-	  return '\n    <!doctype html public="storage">\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=/index.css>\n    <div id=app>' + appHtml + '</div>\n    <script src="/bundle.js"></script>\n   ';
+	  return '\n    <!doctype html public="storage">\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=/index.css>\n    <div id=root>' + appHtml + '</div>\n    <script src="/bundle.js"></script>\n   ';
 	}
 
 	app.listen(PORT, function (error) {
@@ -137,123 +137,6 @@
 /***/ function(module, exports) {
 
 	module.exports = require("compression");
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	module.exports = require("webpack-dev-middleware");
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = require("webpack-hot-middleware");
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	module.exports = require("webpack");
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
-	// var webpack = require('webpack');
-	// var HTMLWebpackPlugin = require('html-webpack-plugin');
-	// var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
-	//   template: __dirname + '/app/index.html',
-	//   filename: 'index.html',
-	//   inject: 'body'
-	// });
-	//
-	// module.exports = {
-	//   entry: __dirname + '/app/index.js',
-	//   module: {
-	//     loaders: [
-	//       {
-	//         test: /\.js$/,
-	//         exclude: /node_modules/,
-	//         loader: 'babel-loader',
-	//         query: {
-	//           presets: [ 'es2015', 'react', 'react-hmre' ]
-	//         }
-	//       },
-	//       {
-	//           test: /\.scss$/,
-	//           loaders: [ 'style', 'css', 'sass' ]
-	//       },
-	//       {
-	//         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-	//         loader: 'url-loader?limit=100000'
-	//       }
-	//     ]
-	//   },
-	//   output: {
-	//     filename: 'transformed.js',
-	//     path: __dirname + '/build ',
-	//     publicPath: '/'
-	//   },
-	//   plugins: [
-	//     new webpack.HotModuleReplacementPlugin(),
-	//     HTMLWebpackPluginConfig
-	//   ]
-	// };
-
-	var webpack = __webpack_require__(8);
-	var path = __webpack_require__(3);
-	var HTMLWebpackPlugin = __webpack_require__(10);
-
-	var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
-	  template: __dirname + '/index.html',
-	  filename: 'index.html',
-	  inject: 'body'
-	});
-
-	module.exports = {
-	  entry: ['./app/index.js'],
-	  module: {
-	    loaders: [{
-	      test: /\.js$/,
-	      exclude: /node_modules/,
-	      loader: 'babel-loader',
-	      query: {
-	        presets: ['es2015', 'react', 'react-hmre']
-	      }
-	    }, {
-	      test: /\.scss$/,
-	      loaders: ['style', 'css', 'sass']
-	    }, {
-	      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-	      loader: 'url-loader?limit=100000'
-	    }]
-	  },
-	  resolve: {
-	    extensions: ['', '.js', 'html']
-	  },
-	  output: {
-	    path: path.join(__dirname, '/dist'),
-	    publicPath: '/',
-	    filename: 'bundle.js'
-	  },
-	  devServer: {
-	    contentBase: './dist',
-	    hot: true
-	  },
-	  plugins: [new webpack.optimize.OccurenceOrderPlugin(), new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin(),
-	  // new webpack.HotModuleReplacementPlugin(),
-	  HTMLWebpackPluginConfig]
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, ""))
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = require("html-webpack-plugin");
 
 /***/ }
 /******/ ]);

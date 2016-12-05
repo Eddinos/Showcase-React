@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 
 /*var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
@@ -24,8 +26,18 @@ module.exports = {
         }
       },
       {
-          test: /\.scss$/,
-          loaders: [ 'style', 'css', 'sass' ]
+        test: /\.s?css$/,
+        loaders: ['style', 'css', 'sass'],
+        exclude: /(node_modules)\react-toolbox/
+      },
+      {
+        test    : /(\.scss|\.css)$/,
+        include : /(node_modules)\/react-toolbox/,
+        loaders : [
+          require.resolve('style-loader'),
+          require.resolve('css-loader') + '?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          require.resolve('sass-loader') + '?sourceMap'
+        ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
@@ -34,7 +46,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', 'html']
+    extensions: ['', '.js', 'css', 'scss'],
+    modulesDirectories: [
+      'node_modules',
+      path.resolve(__dirname, './node_modules')
+    ]
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -45,7 +61,9 @@ module.exports = {
     contentBase: './dist',
     hot: true
   },
+  postcss: [autoprefixer],
   plugins: [
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './components/App/App'
-import Pikachu from './Pikachu'
+import Pikachu from './components/Pikachu/Pikachu'
 
 module.exports = (
   <Route path="/" component={App}>
