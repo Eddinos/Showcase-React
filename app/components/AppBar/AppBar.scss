@@ -1,8 +1,23 @@
 .nav-button {
   font-variant: small-caps;
   font-family: 'LatoWebSemibold';
-  font-size: 2em;
+  font-size: 1.2em;
+  color: grey;
+  text-decoration: none;
+  padding: 5px;
+  border-style: solid;
+  border-width: medium;
+  border-color: transparent;
+}
+
+.app-bar-navigation {
   margin-left: auto;
+  margin-right: 2em;
+  justify-content: space-around;
+  display: flex;
+  width: 20%;
+  align-items: center;
+  overflow: auto;
 }
 
 .appBar {
@@ -15,4 +30,8 @@
   left: 0;
   width: 100%;
   //background-color: cyan;
+}
+
+.NavLink {
+  text-decoration: none;
 }
