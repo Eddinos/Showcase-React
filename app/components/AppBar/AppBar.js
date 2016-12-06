@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import './AppBar.scss';
+import s from './AppBar.scss';
 import IconButton from 'material-ui/IconButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -21,13 +21,27 @@ const style = {
 }
 
 export default class AppBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bgColor: '',
+      height: '5em'
+    };
+  }
+
   getChildContext () {
     return { muiTheme: getMuiTheme(baseTheme) };
   }
 
+  componentDidMount() {
+     window.addEventListener('scroll', () => {if(pageYOffset==0) {this.setState({bgColor: '', height:'5em'})}else {
+       this.setState({bgColor: 'cyan', height: '3em'})
+     }});
+  }
+
   render () {
     return (
-      <div className="appBar">
+      <div className="appBar" style={{ backgroundColor: this.state.bgColor, height: this.state.height, transition: 'height 1s' }}>
         <IconButton
            className="menu-button"
            iconStyle={style.icon}
