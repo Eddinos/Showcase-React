@@ -64,7 +64,7 @@ export default class AppBar extends Component {
       <div className="appBar" style={{
         backgroundColor: this.state.barStyle.bgColor,
         height: this.state.barStyle.height,
-        transition: 'height 0.7s, background-color 0.7s'
+        transition: 'height 0.7s, background-color 0.5s'
        }}>
         <IconButton
            className="menu-button"
