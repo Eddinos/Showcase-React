@@ -17,14 +17,17 @@
   font-size: 3em;
 }
 
+.content {
+  padding: 25vh 0 25vh 0;
+  margin: 0 auto;
+}
+
 body {
   margin: 0;
 }
 
 .home-who {
   color: green;
-  padding: 25vh 0 25vh 0;
-  margin: 0 auto;
   text-align: center;
   display: flex;
   align-items: center;
@@ -35,6 +38,16 @@ body {
     width: auto;
   }
   .bio {
-    font-family: cursive;
+    font-family: 'Galada';
+    font-variant: normal;
+    transform: rotate(-15deg);
   }
+}
+
+.home-what {
+  background-color: #f2f2f2;
+}
+
+.home-contact {
+  background-color: #f2f2f2;
 }

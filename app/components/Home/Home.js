@@ -6,15 +6,30 @@ import AppBar from '../AppBar/AppBar';
 import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
 
-// const ppSrc = "http://img11.deviantart.net/1286/i/2012/151/6/6/like_a_dino_sir__by_username_065-d51sebi.jpg";
+const Who = () => (
+  <div className="home-who content">
+    <img src={pp} alt="dinosir"/>
+    <p className="bio">I'm a dino sir</p>
+  </div>
+)
 
-console.log(pp);
-// const Who = () => (
-//   <div className="home-who content">
-//     <img src={ppSrc} alt="dinosir"/>
-//     <p className="bio">I'm a sir, a dino sir</p>
-//   </div>
-// )
+const What = () => (
+  <div className="home-what content">
+    <p>I used to wanna be like Michael Jordan <br/> Figured that I make it to the NBA and make a fortune</p>
+  </div>
+)
+
+const Misc = () => (
+  <div className="home-misc content">
+    <p>Thank god for these rap recordings <br/>I can ball like him on every verse and chorus</p>
+  </div>
+)
+
+const Contact = () => (
+  <div className="home-contact content">
+    <p>Tu cherches le, contact ?</p>
+  </div>
+)
 
 export default class Home extends Component {
   render () {
@@ -23,22 +38,13 @@ export default class Home extends Component {
         <div className="home-banner container">
           <div className="title">Welcome to my sh*t</div>
         </div>
-        <div className="home-who content">
-          <img src={pp} alt="dinosir"/>
-          <p className="bio">I'm a sir, a dino sir</p>
-        </div>
+        <Who />
         {/* <Link to="/pikachu"><div className="content" style={{backgroundColor: 'blue'}}>
           Who am i
         </div></Link> */}
-        <div className="content" style={{backgroundColor: 'yellow'}}>
-          What I do
-        </div>
-        <div className="content" style={{backgroundColor: 'white'}}>
-          Miscellaneous
-        </div>
-        <div className="content" style={{color: 'white', backgroundColor: 'black'}}>
-          Contact me
-        </div>
+        <What />
+        <Misc />
+        <Contact />
       </div>
     );
   }

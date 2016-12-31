@@ -9,7 +9,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
-    "serve": "start http://localhost:3000/ && webpack-dev-server --progress --hot --content-base dist/ --history-api-fallback --port 3000"
+    "serve": "start http://localhost:3000/ && webpack-dev-server --progress --hot --inline --content-base dist/ --history-api-fallback --port 3000"
   },
   "author": "Eddine Djerboua",
   "license": "ISC",
