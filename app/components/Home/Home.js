@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 import AppBar from '../AppBar/AppBar';
 import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
+import Map from '../Map/Map';
+import Contact from '../Contact/Contact';
 
 const Who = () => (
   <div className="home-who content">
@@ -25,13 +27,10 @@ const Misc = () => (
   </div>
 )
 
-const Contact = () => (
-  <div className="home-contact content">
-    <p>Tu cherches le, contact ?</p>
-  </div>
-)
+
 
 export default class Home extends Component {
+
   render () {
     return (
       <div>
@@ -39,12 +38,10 @@ export default class Home extends Component {
           <div className="title">Welcome to my sh*t</div>
         </div>
         <Who />
-        {/* <Link to="/pikachu"><div className="content" style={{backgroundColor: 'blue'}}>
-          Who am i
-        </div></Link> */}
         <What />
         <Misc />
         <Contact />
+        {/* <Map /> */}
       </div>
     );
   }
