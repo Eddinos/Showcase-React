@@ -88,7 +88,7 @@ export default class Contact extends Component {
       this.setState({ disableFields: true })
 
       //Send email
-      axios.post('config.contactAPI', {
+      axios.post(config.contactAPI, {
         name: this.state.contact.firstName + ' ' + this.state.contact.lastName,
         from: this.state.contact.email,
         message: this.state.contact.message
