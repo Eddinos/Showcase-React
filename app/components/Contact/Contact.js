@@ -9,6 +9,7 @@ import config from "../../../config";
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
+import CircularProgress from 'material-ui/CircularProgress';
 import './Contact.scss';
 
 export default class Contact extends Component {
@@ -18,7 +19,9 @@ export default class Contact extends Component {
       errorText: {},
       contact: {},
       openRequiredFieldsDialog: false,
-      openMsgSentSnackbar: false
+      openMsgSentSnackbar: false,
+      snackBarMessage: '',
+      disableFields: false
     }
   }
 
@@ -82,16 +85,21 @@ export default class Contact extends Component {
         }
       }
 
+      this.setState({ disableFields: true })
+
       //Send email
-      axios.post(config.contactAPI, {
+      axios.post('config.contactAPI', {
         name: this.state.contact.firstName + ' ' + this.state.contact.lastName,
         from: this.state.contact.email,
         message: this.state.contact.message
-      })
+      }, () => {alert('banana')})
       .then( (response) => {
+        this.setState({ snackBarMessage: "Your message was successfully sent", disableFields: false });
         this.handleOpenMSS();
       })
       .catch( (error) => {
+        this.setState({ snackBarMessage: error.toString(), disableFields:false })
+        this.handleOpenMSS();
         console.log(error);
       });
     }
@@ -102,7 +110,6 @@ export default class Contact extends Component {
       <FlatButton
         label="OK"
         primary={true}
-        disabled={false}
         onTouchTap={this.handleCloseRFD.bind(this)}
       />
     ];
@@ -119,7 +126,7 @@ export default class Contact extends Component {
         </Dialog>
         <Snackbar
           open={this.state.openMsgSentSnackbar}
-          message="Your message was sent successfully"
+          message={this.state.snackBarMessage}
           autoHideDuration={4000}
           onRequestClose={this.handleCloseMSS.bind(this)}
         />
@@ -129,16 +136,30 @@ export default class Contact extends Component {
             <p>Please feel free to contact me if you have any questions you believe I could answer, or if you just want to say hello</p>
           </div>
           <div className="contact-form">
+              <div className="loading-container">
+                <CircularProgress
+                  size={80}
+                  style={{display: this.state.disableFields ? 'block' : 'none',
+                          position: 'relative',
+                          left: '40%',
+                          top: '40%'
+                        }}
+                />
+              </div>
               <div className="name">
                 <TextField
                   floatingLabelText='First Name'
                   errorText={this.state.errorText.firstName}
                   onBlur={this.makeChangeHandler('firstName').bind(this)}
+                  disabled={this.state.disableFields}
+                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
                 />
                 <TextField
                   floatingLabelText='Last Name'
                   errorText={this.state.errorText.lastName}
                   onBlur={this.makeChangeHandler('lastName').bind(this)}
+                  disabled={this.state.disableFields}
+                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
                 />
               </div>
               <div className="mail-address">
@@ -147,6 +168,8 @@ export default class Contact extends Component {
                   errorText={this.state.errorText.email}
                   onBlur={this.makeChangeHandler('email').bind(this)}
                   fullWidth={true}
+                  disabled={this.state.disableFields}
+                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
                 />
               </div>
               <div className="message">
@@ -158,12 +181,15 @@ export default class Contact extends Component {
                   multiLine={true}
                   rows={4}
                   className="tf"
+                  disabled={this.state.disableFields}
+                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
                 />
               </div>
               <FlatButton
-                label="Send"
+                label="Send message"
                 className="send-button"
                 secondary={false}
+                disabled={this.state.disableFields}
                 onClick={this.sendMessage.bind(this)}
               />
           </div>
