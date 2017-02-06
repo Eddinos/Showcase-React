@@ -53,7 +53,8 @@ export default class AppBar extends Component {
       }
       else {
         newState.barStyle.bgColor = 'rgba(0, 255, 255, 0.8)';
-        newState.barStyle.height = '3em';
+        var height = screen.width < 480 ? '6em' : '3em';
+        newState.barStyle.height = height;
       }
     })
 

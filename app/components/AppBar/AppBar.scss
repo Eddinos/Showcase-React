@@ -22,6 +22,7 @@
 
 .appBar {
   height: 5em;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,6 +31,21 @@
   left: 0;
   width: 100%;
   //background-color: cyan;
+}
+
+@media (max-device-width: 480px) {
+  .appBar {
+    height: 10em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    //background-color: cyan;
+  }
 }
 
 .NavLink {
