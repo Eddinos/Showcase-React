@@ -7,6 +7,7 @@ import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
 import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
+import Card from '../Card/Card';
 
 const Who = () => (
   <div className="home-who content">
@@ -41,6 +42,11 @@ export default class Home extends Component {
         <What />
         <Misc />
         <Contact />
+        <Card
+          source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
+          title="Jahlil"
+          description="Traded for Alexis Ajinca?"
+        />
         {/* <Map /> */}
       </div>
     );

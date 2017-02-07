@@ -1,0 +1,51 @@
+// .card {
+//   position: relative;
+// }
+//
+// .card-img {
+//   width: auto;
+//   height: 300px;
+// }
+//
+// .card-caption {
+//   display: none;
+//   position: absolute;
+//   background-color: rgba(0,0,0,.15);
+// }
+//
+// .card:hover card-caption {
+//   display: block;
+// }
+
+.card {
+    position: relative;
+    display: inline-block;
+}
+
+.card-caption {
+    visibility: hidden;
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    bottom: 5%;
+    opacity: 0;
+
+    color: white;
+}
+
+.card:hover .card-img {
+    opacity: .7;
+    //transition: opacity 3s;
+}
+
+.card:hover .card-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .8);
+    transition: background-color 2s;
+}
