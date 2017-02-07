@@ -1,51 +1,73 @@
-// .card {
-//   position: relative;
-// }
-//
-// .card-img {
-//   width: auto;
-//   height: 300px;
-// }
-//
-// .card-caption {
-//   display: none;
-//   position: absolute;
-//   background-color: rgba(0,0,0,.15);
-// }
-//
-// .card:hover card-caption {
-//   display: block;
-// }
-
 .card {
     position: relative;
     display: inline-block;
+
+    font-family: 'LatoWebSemiBold';
+    font-size: 150%;
 }
 
 .card-caption {
-    visibility: hidden;
-    position: absolute;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    bottom: 5%;
-    opacity: 0;
-
-    color: white;
-}
-
-.card:hover .card-img {
-    opacity: .7;
-    //transition: opacity 3s;
-}
-
-.card:hover .card-caption {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    visibility: visible;
+
+    position: absolute;
+    left: 3%;
+    width: 94%;
+    height: 94%;
+    bottom: 3%;
+    opacity: 0;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity .5s;
+}
+
+.card:hover .card-caption {
     opacity: 1;
-    background-color: rgba(0, 0, 0, .8);
-    transition: background-color 2s;
+}
+
+.card h1 {
+  // margin-right: 50%;
+  // transition: margin-right .5s;
+  font-variant: small-caps;
+  position: relative;
+  left: -50%;
+  transition: left .5s;
+}
+
+.card p {
+  // margin-left: 50%;
+  // transition: margin-left .5s;
+  margin: 0 15% 0 15%;
+  position: relative;
+  right: -50%;
+  transition: right .5s;
+}
+
+.card:hover h1 {
+  // margin-right: 2%;
+  // transition: margin-right .5s;
+  // position: relative;
+  left: 0%;
+  transition: left .5s;
+}
+
+.card:hover p {
+  margin: 0 15% 0 15%;
+  // transition: margin-left .5s;
+  right: 0%;
+  transition: right .5s;
+}
+
+.card:hover .card-img {
+    opacity: .7;
+    transition: opacity .5s;
+}
+
+.card .card-img {
+  transition: opacity .5s;
+  width: 700px;
+  height: 600px;
 }
