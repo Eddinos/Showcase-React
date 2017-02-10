@@ -8,6 +8,7 @@ import pp from '../../../tools/images/Dino-sir.jpg';
 import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
 import Card from '../Card/Card';
+import NavLink from '../NavLink/NavLink'
 
 const Who = () => (
   <div className="home-who content">
@@ -42,11 +43,14 @@ export default class Home extends Component {
         <What />
         <Misc />
         <Contact />
-        <Card
-          source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
-          title="Jahlil"
-          description="Traded for Alexis Ajinca?"
-        />
+        <NavLink to="/pikachu">
+          <Card
+            source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
+            title="My little panel"
+            description="You gotta pick the right words CJ gadammit for fuck sake"
+          />
+        </NavLink>
+
         {/* <Map /> */}
       </div>
     );

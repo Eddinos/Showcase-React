@@ -4,6 +4,7 @@
 
     font-family: 'LatoWebSemiBold';
     font-size: 150%;
+    cursor: pointer;
 }
 
 .card-caption {
@@ -29,34 +30,29 @@
 }
 
 .card h1 {
-  // margin-right: 50%;
-  // transition: margin-right .5s;
   font-variant: small-caps;
   position: relative;
-  left: -50%;
+  left: -40%;
   transition: left .5s;
+  pointer-events:none;
 }
 
 .card p {
-  // margin-left: 50%;
-  // transition: margin-left .5s;
   margin: 0 15% 0 15%;
   position: relative;
-  right: -50%;
+  right: -40%;
   transition: right .5s;
+  pointer-events:none;
+
 }
 
 .card:hover h1 {
-  // margin-right: 2%;
-  // transition: margin-right .5s;
-  // position: relative;
   left: 0%;
   transition: left .5s;
 }
 
 .card:hover p {
   margin: 0 15% 0 15%;
-  // transition: margin-left .5s;
   right: 0%;
   transition: right .5s;
 }
@@ -68,6 +64,6 @@
 
 .card .card-img {
   transition: opacity .5s;
-  width: 700px;
-  height: 600px;
+  width: 400px;
+  height: 300px;
 }
