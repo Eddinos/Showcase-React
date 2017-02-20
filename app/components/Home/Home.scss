@@ -55,6 +55,21 @@ body {
 
 .home-what {
   background-color: #f2f2f2;
+  .elements {
+    margin: 0 10% 0 10%;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    .content-text {
+      max-width: 40%;
+      font-family: 'LatoWebSemibold';
+      font-size: 3em;
+      font-variant: small-caps;
+      p {
+        font-size: 50%;
+      }
+    }
+  }
 }
 
 .home-contact {

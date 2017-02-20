@@ -1,7 +1,7 @@
 .card {
     position: relative;
     display: inline-block;
-
+    margin: 0;
     font-family: 'LatoWebSemiBold';
     font-size: 150%;
     cursor: pointer;
@@ -16,8 +16,8 @@
     position: absolute;
     left: 3%;
     width: 94%;
-    height: 94%;
-    bottom: 3%;
+    height: 91%;
+    top: 3%;
     opacity: 0;
 
     color: white;
@@ -32,7 +32,7 @@
 .card h1 {
   font-variant: small-caps;
   position: relative;
-  left: -40%;
+  left: -10%;
   transition: left .5s;
   pointer-events:none;
 }
@@ -40,7 +40,7 @@
 .card p {
   margin: 0 15% 0 15%;
   position: relative;
-  right: -40%;
+  right: -10%;
   transition: right .5s;
   pointer-events:none;
 

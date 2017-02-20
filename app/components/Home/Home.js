@@ -13,19 +13,31 @@ import NavLink from '../NavLink/NavLink'
 const Who = () => (
   <div className="home-who content">
     <img src={pp} alt="dinosir"/>
-    <p className="bio">I'm a dino sir</p>
+    <p className="bio content-text">I'm a dino sir</p>
   </div>
 )
 
 const What = () => (
   <div className="home-what content">
-    <p>I used to wanna be like Michael Jordan <br/> Figured that I make it to the NBA and make a fortune</p>
+    <div className="elements">
+      <div className="content-text">
+        <h4>My projects</h4>
+        <p>Check out my last realization, but also other school and personal works</p>
+      </div>
+      <NavLink to="/pikachu">
+        <Card
+          source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
+          title="The last project"
+          description="Wow much cool great job such engineer"
+        />
+      </NavLink>
+    </div>
   </div>
 )
 
 const Misc = () => (
   <div className="home-misc content">
-    <p>Thank god for these rap recordings <br/>I can ball like him on every verse and chorus</p>
+    <p className="content-text">Thank god for these rap recordings <br/>I can ball like him on every verse and chorus</p>
   </div>
 )
 
@@ -43,13 +55,7 @@ export default class Home extends Component {
         <What />
         <Misc />
         <Contact />
-        <NavLink to="/pikachu">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
-            title="My little panel"
-            description="You gotta pick the right words CJ gadammit for fuck sake"
-          />
-        </NavLink>
+
 
         {/* <Map /> */}
       </div>

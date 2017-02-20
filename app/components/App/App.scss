@@ -1,15 +1,4 @@
-h1 {
-
-  //color: white;
-  vertical-align: top;
-}
-
-h2 {
-  @extend h1;
-  padding: 0 0 50px;
-}
-
-.content {
+.content-text {
   font-family: 'LatoWebSemibold';
   font-size: 3em;
   text-align: center;
