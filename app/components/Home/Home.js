@@ -24,7 +24,7 @@ const What = () => (
         <h4>My projects</h4>
         <p>Check out my last realization, but also other school and personal works</p>
       </div>
-      <NavLink to="/pikachu">
+      <NavLink to="/pikachu" className="prout">
         <Card
           source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
           title="The last project"
