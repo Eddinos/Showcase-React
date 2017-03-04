@@ -4,6 +4,72 @@ import titlePic from '../../../tools/images/adaptedBasketball.jpg';
 import './Portfolio.scss';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
+import Presenter from '../Presenter/Presenter';
+
+{/* <NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/isaiah-thomas.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/wolves-garnett.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/hamilton-pistons.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink>
+<NavLink to="/pikachu" className="project-card">
+  <Card
+    source="http://www.basketusa.com/wp-content/uploads/2017/02/lou-williams-lakers.jpg"
+    title="The last project"
+    description="Wow much cool great job such engineer"
+
+  />
+</NavLink> */}
 
 const Intro = () => (
   <div className="intro content-text">
@@ -13,29 +79,37 @@ const Intro = () => (
 )
 
 export default class Portfolio extends Component {
-  componentDidMount() {
-     window.addEventListener('scroll', () => { this.handleScroll(); });
-
-    // w/ onload event it triggers too early and animation is played out of the viewport
-    window.onload = () => {
-      this.handleScroll()
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: []
     }
   }
 
-  handleScroll () {
-    document.querySelectorAll('.project-card').forEach((e, i) => {
-      if(this.checkVisible(e)) {
-        // Timeout used for style effect, %3 is too avoid too long delay
-        setTimeout(() => {e.className += ' blossom'}, 100*(i%3))
-      }
-    })
-  }
-
-  // If the bounding rectangle of the element is above the lower part of viewport then return true;
-  checkVisible(elm) {
-    var rect = elm.getBoundingClientRect();
-    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-    return !(rect.top - viewHeight >= 0);
+  componentDidMount() {
+   // initialization of projects displayed in presenter
+   var loadedProjects = [];
+   loadedProjects.push({
+     source: "http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg",
+     title: "The Last Project",
+     description: "Wow much cool great job such engineer"
+   },
+   {
+     source: "http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg",
+     title: 'Another one',
+     description: "Wow much cool great job such engineer"
+   },
+   {
+     source: "http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg",
+     title: "The last project",
+     description: "Wow much cool great job such engineer"
+   },
+   {
+     source: "http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg",
+     title: "The last project",
+     description: "Wow much cool great job such engineer"
+   });
+   this.setState({projects: loadedProjects});
   }
 
   render () {
@@ -51,73 +125,20 @@ export default class Portfolio extends Component {
         </figure>
 
         <Intro/>
-<div className="alacon">
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
 
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/isaiah-thomas.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/wolves-garnett.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/hamilton-pistons.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-        <NavLink to="/pikachu" className="project-card">
-          <Card
-            source="http://www.basketusa.com/wp-content/uploads/2017/02/lou-williams-lakers.jpg"
-            title="The last project"
-            description="Wow much cool great job such engineer"
-
-          />
-        </NavLink>
-
-        </div>
+        <Presenter>
+          {this.state.projects.map((item, key) => {
+            return (
+              <NavLink to="/pikachu" className="project-card" key={key}>
+                <Card
+                  source={item.source}
+                  title={item.title}
+                  description={item.description}
+                />
+              </NavLink>
+            )
+          })}
+        </Presenter>
 
 
       </div>
