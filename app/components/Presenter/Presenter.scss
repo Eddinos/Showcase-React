@@ -1,0 +1,38 @@
+.blossom {
+  animation-name: blossom;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  // animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.project-card {
+  transform: scale(0.1);
+  // flex-basis: 80%;
+  display: flex;
+  justify-content: center;
+  @media (max-device-width: 500px) {
+    flex-basis: 80%;
+    .card {
+      width: 600px;
+      height: 500px;
+      .card-img {
+        width: 600px;
+        height: 500px;
+      }
+    }
+  }
+}
+
+
+
+.presenter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@keyframes blossom {
+    from {transform: scale(0.1);}
+    to {transform: scale(1);}
+}

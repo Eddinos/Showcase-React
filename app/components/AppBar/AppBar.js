@@ -77,6 +77,7 @@ export default class AppBar extends Component {
         <div className="app-bar-navigation">
           <IndexLink activeClassName="active" to="/" className="nav-button">Home</IndexLink>
           <NavLink activeClassName="active" to="/pikachu" className="nav-button">Pika</NavLink>
+          <NavLink activeClassName="active" to="/portfolio" className="nav-button">Portfolio</NavLink>
           <span className="nav-button">Banana</span>
           {/* <span className="nav-button">Douze</span>
           <span className="nav-button">Mesures</span>

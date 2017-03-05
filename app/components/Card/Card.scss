@@ -1,0 +1,71 @@
+.card {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    font-family: 'LatoWebSemiBold';
+    font-size: 150%;
+    cursor: pointer;
+    width: 400px;
+    height: 300px;
+}
+
+.card-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    position: absolute;
+    left: 3%;
+    width: 94%;
+    height: 94%;
+    top: 3%;
+    opacity: 0;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity .5s;
+}
+
+.card:hover .card-caption {
+    opacity: 1;
+}
+
+.card h1 {
+  font-variant: small-caps;
+  position: relative;
+  left: -10%;
+  transition: left .5s;
+  pointer-events:none;
+}
+
+.card p {
+  margin: 0 15% 0 15%;
+  position: relative;
+  right: -10%;
+  transition: right .5s;
+  pointer-events:none;
+
+}
+
+.card:hover h1 {
+  left: 0%;
+  transition: left .5s;
+}
+
+.card:hover p {
+  margin: 0 15% 0 15%;
+  right: 0%;
+  transition: right .5s;
+}
+
+.card:hover .card-img {
+    opacity: .7;
+    transition: opacity .5s;
+}
+
+.card .card-img {
+  transition: opacity .5s;
+  width: 400px;
+  height: 300px;
+}
