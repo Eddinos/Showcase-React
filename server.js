@@ -2,7 +2,9 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 8080
-var compression = require('compression')
+var compression = require('compression');
+import { match, RouterContext } from 'react-router';
+import routes from './app/routes';
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -44,13 +46,21 @@ app.get('*', function (req, res) {
 
 function renderPage(appHtml) {
   return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>My First React Router App</title>
-    <link rel=stylesheet href=/index.css>
-    <div id=root>${appHtml}</div>
-    <script src="/bundle.js"></script>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Black Sardine shows off</title>
+      <link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
+    </head>
+    <body>
+      <div id='root'/>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByH0c5bxYDZ48BLQ401BBsm4DppG6QNkQ"></script>
+      <script src="/bundle.js"></script>
+
+    </script>
+  </body>
+  </html>
    `
 }
 
