@@ -5,71 +5,7 @@ import './Portfolio.scss';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
 import Presenter from '../Presenter/Presenter';
-
-{/* <NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/isaiah-thomas.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/wolves-garnett.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/hamilton-pistons.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/lou-williams-lakers.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink> */}
+import DataContainer from '../DataContainer/DataContainer'
 
 const Intro = () => (
   <div className="intro content-text">
@@ -126,20 +62,27 @@ export default class Portfolio extends Component {
 
         <Intro/>
 
-        <Presenter>
-          {this.state.projects.map((item, key) => {
-            return (
-              <NavLink to="/pikachu" className="project-card" key={key}>
-                <Card
-                  source={item.source}
-                  title={item.title}
-                  description={item.description}
-                />
-              </NavLink>
-            )
-          })}
-        </Presenter>
+        <DataContainer url="http://numbersapi.com/random/trivia">
 
+          <Presenter>
+            {this.state.projects.map((item, key) => {
+              return (
+                <NavLink to="/pikachu" key={key}>
+                  <Card
+                    source={item.source}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </NavLink>
+              )
+            })}
+
+          </Presenter>
+{this.props.children}
+        </DataContainer>
+        {/* <DataContainer url="http://numbersapi.com/random/year">
+
+        </DataContainer> */}
 
       </div>
     )

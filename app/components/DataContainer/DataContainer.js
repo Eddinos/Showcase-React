@@ -15,13 +15,17 @@ export default class DataContainer extends Component {
     var url = this.props.url;
     axios.get(url)
     .then((response) => {
-      console.log('received');
+      console.log(this.props.children);
+      let ninos = React.Children.map(this.props.children, child => {
+        return React.cloneElement(child, { parentData: response.data })
+      })
+      console.log('ninos');
+      console.log(ninos);
       this.setState({data: response.data,
-      ninos: React.cloneElement(this.props.children,
-          { parentData: {carotte: 'kakaroto'} } )})
+      ninos: ninos})
     })
     .catch((error) => {
-      alert('alerte au gogol')
+      console.log(error.message);
     })
     console.log('des');
   }
