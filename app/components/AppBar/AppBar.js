@@ -7,8 +7,8 @@ import IconButton from 'material-ui/IconButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ViewHeadLine from 'material-ui/svg-icons/action/view-headline';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+
+
 
 const style = {
   icon: {
@@ -76,9 +76,9 @@ export default class AppBar extends Component {
         </IconButton>
         <div className="app-bar-navigation">
           <IndexLink activeClassName="active" to="/" className="nav-button">Home</IndexLink>
-          <NavLink activeClassName="active" to="/pikachu" className="nav-button">Pika</NavLink>
+
           <NavLink activeClassName="active" to="/portfolio" className="nav-button">Portfolio</NavLink>
-          <span className="nav-button">Banana</span>
+          <span className="nav-button">Saucisse</span>
           {/* <span className="nav-button">Douze</span>
           <span className="nav-button">Mesures</span>
           <span className="nav-button">De Guerre</span> */}
