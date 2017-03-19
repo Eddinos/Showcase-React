@@ -16,7 +16,9 @@
   .contact-form {
     max-width: 40%;
     position: relative;
-
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 6px;
+    padding: 50px;
+    border-radius: 20px;
 
     .name {
       display: flex;
@@ -27,7 +29,6 @@
       float: right;
       border-style: solid;
       box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 6px;
-      width: 30%;
     }
     .tf {
       //filter: blur(3px);
