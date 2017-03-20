@@ -19,6 +19,10 @@ export default class Presenter extends Component {
     // }
   }
 
+  componentWillReceiveProps() {
+    this.setChildrenClass();
+  }
+
   setChildrenClass() {
     for(var i in this.refs) {
       let elt = findDOMNode(this.refs[i]);
@@ -36,10 +40,8 @@ export default class Presenter extends Component {
           if(elt.classList.contains('blossom')) {
             elt.classList.remove('blossom');
           }
-          elt.classList.add('blossom');/* += ' blossom';*/
-          // var lastIndex = e.className.lastIndexOf(' ');
-          // e.className = e.className.substring(0, lastIndex);
-        }, 100*(i%3))
+          elt.classList.add('blossom');
+        }, 200*(i%3))
       }
     }
     document.querySelectorAll('.project-card').forEach((e, i) => {

@@ -92,9 +92,9 @@ export default class Contact extends Component {
         name: this.state.contact.firstName + ' ' + this.state.contact.lastName,
         from: this.state.contact.email,
         message: this.state.contact.message
-      }, () => {alert('banana')})
+      })
       .then( (response) => {
-        this.setState({ snackBarMessage: "Your message was successfully sent", disableFields: false });
+        this.setState({ snackBarMessage: response.data.msg, disableFields: false });
         this.handleOpenMSS();
       })
       .catch( (error) => {

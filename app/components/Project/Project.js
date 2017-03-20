@@ -9,8 +9,10 @@ export default class Project extends Component {
       projectID: props.params.projectID,
       query: props.location.query
     }
-    console.log('query');
-    console.log(props.location.query);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({projectID: nextProps.params.projectID});
   }
 
   render () {

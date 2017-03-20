@@ -5,7 +5,8 @@ import './Portfolio.scss';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
 import Presenter from '../Presenter/Presenter';
-import DataContainer from '../DataContainer/DataContainer'
+import DataContainer from '../DataContainer/DataContainer';
+import axios from 'axios';
 
 const Intro = () => (
   <div className="intro content-text">
@@ -23,6 +24,20 @@ export default class Portfolio extends Component {
   }
 
   componentDidMount() {
+    axios.get('http://localhost:8080/api/getProjects')
+    .then((response) => {
+      // let ninos = React.Children.map(this.props.children, child => {
+      //   if (React.isValidElement(child)) {
+      //     return React.cloneElement(child, { parentData: response.data })
+      //   }
+      // })
+      console.log(response.data);
+      this.setState({proyectos: response.data.projects})
+    })
+    .catch((error) => {
+      console.log(error.message);
+    })
+
    // initialization of projects displayed in presenter
    var loadedProjects = [];
    loadedProjects.push({
@@ -49,6 +64,22 @@ export default class Portfolio extends Component {
   }
 
   render () {
+    if (!this.state.proyectos) {
+      return (
+        <div className="portfolio">
+          <figure className="portfolio-header">
+            <img src={titlePic} alt="portfolio header" className="header-img"/>
+            <figcaption className="header-caption">
+              <h1 className="title">
+                My projects
+              </h1>
+            </figcaption>
+          </figure>
+
+          <Intro/>
+        </div>
+      )
+    }
     return (
       <div className="portfolio">
         <figure className="portfolio-header">
@@ -62,24 +93,38 @@ export default class Portfolio extends Component {
 
         <Intro/>
 
-        <DataContainer url="http://numbersapi.com/random/trivia">
+        {/* Too bad but I can't think of a better solution right now
+          <DataContainer url="http://numbersapi.com/random/trivia"> */}
 
-          <Presenter>
-            {this.state.projects.map((item, key) => {
+        <Presenter>
+          {this.state.proyectos.map((item, key) => {
               return (
-                <NavLink to="/pikachu" key={key}>
+                <NavLink to={"/portfolio/project/" + item.id} key={key}>
                   <Card
-                    source={item.source}
+                    source={item.media}
                     title={item.title}
-                    description={item.description}
+                    description={item.shortDescription}
                   />
                 </NavLink>
               )
             })}
+          {this.state.projects.map((item, key) => {
+            return (
+              <NavLink to="/pikachu" key={key}>
+                <Card
+                  source={item.source}
+                  title={item.title}
+                  description={item.description}
+                />
+              </NavLink>
+            )
+          })}
+        </Presenter>
 
-          </Presenter>
-{this.props.children}
-        </DataContainer>
+        {this.props.children}
+
+        {/* </DataContainer> */}
+
         {/* <DataContainer url="http://numbersapi.com/random/year">
 
         </DataContainer> */}
