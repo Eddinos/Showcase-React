@@ -7,6 +7,8 @@ import NavLink from '../NavLink/NavLink';
 import Presenter from '../Presenter/Presenter';
 import DataContainer from '../DataContainer/DataContainer';
 import axios from 'axios';
+import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const Intro = () => (
   <div className="intro content-text">
@@ -40,11 +42,7 @@ export default class Portfolio extends Component {
 
    // initialization of projects displayed in presenter
    var loadedProjects = [];
-   loadedProjects.push({
-     source: "http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg",
-     title: "The Last Project",
-     description: "Wow much cool great job such engineer"
-   },
+   loadedProjects.push(
    {
      source: "http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg",
      title: 'Another one',
@@ -80,6 +78,7 @@ export default class Portfolio extends Component {
         </div>
       )
     }
+    let page = this.props.location.pathname;
     return (
       <div className="portfolio">
         <figure className="portfolio-header">
@@ -99,13 +98,13 @@ export default class Portfolio extends Component {
         <Presenter>
           {this.state.proyectos.map((item, key) => {
               return (
-                <NavLink to={"/portfolio/project/" + item.id} key={key}>
+                <Link to={"/portfolio/project/" + item.id} key={key}>
                   <Card
                     source={item.media}
                     title={item.title}
                     description={item.shortDescription}
                   />
-                </NavLink>
+                </Link>
               )
             })}
           {this.state.projects.map((item, key) => {
@@ -120,8 +119,19 @@ export default class Portfolio extends Component {
             )
           })}
         </Presenter>
+        
+        {this.props.children &&
+          <div className="project-display">
+            <ReactCSSTransitionGroup
+              transitionName="swap"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}
+            >
+                {React.cloneElement(React.Children.only(this.props.children), {key: page, projects: this.state.proyectos })}
+            </ReactCSSTransitionGroup>
+          </div>
+        }
 
-        {this.props.children}
 
         {/* </DataContainer> */}
 
