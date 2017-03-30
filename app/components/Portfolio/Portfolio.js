@@ -98,7 +98,7 @@ export default class Portfolio extends Component {
         <Presenter>
           {this.state.proyectos.map((item, key) => {
               return (
-                <Link to={"/portfolio/project/" + item.id} key={key}>
+                <Link to={"/portfolio/project/" + item.id + "#project"} key={key}>
                   <Card
                     source={item.media}
                     title={item.title}
@@ -119,7 +119,7 @@ export default class Portfolio extends Component {
             )
           })}
         </Presenter>
-        
+
         {this.props.children &&
           <div className="project-display">
             <ReactCSSTransitionGroup
