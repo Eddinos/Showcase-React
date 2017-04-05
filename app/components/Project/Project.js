@@ -29,6 +29,17 @@ export default class Project extends Component {
         <h1 className="title">{this.state.currentProject.title}</h1>
         <h4 className="description">{this.state.currentProject.longDescription}</h4>
         <Progress percentageValue={this.state.currentProject.completion}/>
+        <div className="technos">
+          <span>Those technologies were used in the creation of this project : </span>
+          <ul>
+            {this.state.currentProject.technos.map((item, key) => {
+              return (
+                <li key={key}>{item} <div className={`technos-pic technos-pic--${item}`}></div> </li>
+              )
+            })}
+          </ul>
+        </div>
+
       </div>
     )
   }
