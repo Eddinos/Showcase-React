@@ -1,0 +1,56 @@
+$spriteURL: '../../../tools/images/Technos-Sprite.png';
+.technos {
+  &__list {
+    max-height: 300px;
+    width: 200px;
+    padding: 0 20px;
+    list-style: none;
+    border: 1px solid;
+    border-color: rgba(192, 192, 197, 0.5);
+    border-radius: 5px;
+    overflow-y: scroll;
+    // I'll take care of firefox later
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    li {
+      padding: 5px 0;
+      width: inherit;
+      &:not(:last-child) {
+        border-bottom: 1px solid;
+        border-color: rgba(192, 192, 197, 0.5);
+      }
+      .itemContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+  &__pic {
+    height: 64px;
+    width: 64px;
+    display: inline-block;
+    &--HTML5 {
+      background: url(#{$spriteURL}) 8px 0;
+    }
+    &--CSS3 {
+      background: url(#{$spriteURL}) -65px 0;
+    }
+    &--jQuery {
+      background: url(#{$spriteURL}) -302px 0;
+    }
+    &--Ionic {
+      background: url(#{$spriteURL}) -388px 0;
+    }
+    &--NodeJS {
+      background: url(#{$spriteURL}) -476px 0;
+    }
+    &--Sass {
+      background: url(#{$spriteURL}) -567px 0;
+    }
+    &--VueJS {
+      background: url(#{$spriteURL}) -658px 0;
+    }
+  }
+}
