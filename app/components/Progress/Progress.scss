@@ -21,5 +21,10 @@
 
     border-radius: 2px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
+    animation: animate-stripes 7s linear 30;
   }
+}
+
+@keyframes animate-stripes {
+   100% { background-position: 150% 0%; }
 }
