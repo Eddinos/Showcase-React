@@ -26,5 +26,5 @@
 }
 
 @keyframes animate-stripes {
-   100% { background-position: 150% 0%; }
+   100% { background-position: 150% 0%; z-index: 0; }
 }

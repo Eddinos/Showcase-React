@@ -44,9 +44,6 @@ export default class Presenter extends Component {
         }, 200*(i%3))
       }
     }
-    document.querySelectorAll('.project-card').forEach((e, i) => {
-
-    })
   }
 
   // If the bounding rectangle of the element is above the lower part of viewport then return true;
