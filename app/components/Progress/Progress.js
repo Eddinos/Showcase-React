@@ -5,7 +5,6 @@ import './Progress.scss';
 export default class Progress extends Component {
   constructor(props) {
     super(props);
-    console.log('constru');
     this.state = {
       value: 0
     }
