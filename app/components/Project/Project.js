@@ -2,7 +2,9 @@ import React from 'react';
 import { Component, PropTypes } from 'react';
 import Progress from '../Progress/Progress';
 import List from '../List/List';
-import './project.scss'
+import Reference from '../Reference/Reference';
+import { Link } from 'react-router';
+import './Project.scss'
 
 export default class Project extends Component {
   constructor (props) {
@@ -24,15 +26,48 @@ export default class Project extends Component {
     // });
   }
 
+  getNavID (direction) {
+    let currentID = parseInt(this.props.params.projectID);
+    if (direction === 'left') {
+      if (currentID > 1) {
+        return currentID - 1;
+      }
+      else {
+        return 1;
+      }
+    }
+    else if (direction === 'right') {
+      if (currentID < this.props.projects.length) {
+        return currentID + 1;
+      }
+      else {
+        return this.props.projects.length;
+      }
+    }
+  }
+
+  handleTouchMove (e) {
+    console.log(e);
+  }
+
   render () {
     return (
-      <div className="project" id="project">
+      <div className="project" id="project" >
         <h1 className="title">{this.state.currentProject.title}</h1>
         <h4 className="description">{this.state.currentProject.longDescription}</h4>
         <Progress percentageValue={this.state.currentProject.completion}/>
 
         <List technos={this.state.currentProject.technos} />
-
+        <div className="refs">
+          <Reference className="source_ref" type="source" url={this.state.currentProject.source}/>
+          <Reference className="link_ref" type="web" url={this.state.currentProject.url}/>
+        </div>
+        <Link className="arrow arrow-left" to={`/portfolio/project/${this.getNavID('left')}`}>
+          <span className="icon-circle-left"></span>
+        </Link>
+        <Link className="arrow arrow-right" to={`/portfolio/project/${this.getNavID('right')}`}>
+          <span className="icon-circle-right"></span>
+        </Link>
       </div>
     )
   }

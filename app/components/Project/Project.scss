@@ -8,50 +8,49 @@
     margin-left: 25%;
   }
   .description {
-    max-width: 80%;
+    max-width: 70%;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.5em;
-  }
-  .completion[value] {
-    -webkit-appearance: none;
-    appearance: none;
-
-    width: 250px;
-    height: 35px;
-    transform: rotate(-90deg);
-    margin-top: 100px;
-    -webkit-animation: animate-stripes 5s linear infinite;
-    animation: animate-stripes 5s linear infinite;
-  }
-  ::-webkit-progress-bar {
-    background-color: #eee;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  }
-  ::-webkit-progress-value {
-    background-image:
-	   -webkit-linear-gradient(-45deg,
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%,
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top,
-	                           rgba(255, 255, 255, .25),
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left, #09c, #f44);
-
-    border-radius: 2px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-
   }
 
   .progress_bar {
     position: relative;
     top: 0px;
-    right: 130px;
+    right: 55px;
   }
 
   .technos {
     position: absolute;
-    left: 30%;
+    left: 15%;
+    max-width: 30%;
+  }
+
+  .refs {
+    position: absolute;
+    left: 55%;
+    max-width: 30%;
+  }
+
+  .arrow {
+    text-decoration: none;
+    color: black;
+    font-size: 3em;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+    &-left {
+      left: 0;
+    }
+    &-right {
+      right: 0;
+    }
   }
 }
