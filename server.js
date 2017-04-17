@@ -39,10 +39,37 @@ app.get('*', function (req, res) {
       res.send(renderPage(appHtml))
     } else {
       // no errors, no redirect, we just didn't match anything
-      res.status(404).send('Not Found')
+      res.status(404);
+      res.send(render404());
+
     }
   })
 });
+
+function render404 () {
+  return `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Black Sardine shows off</title>
+      <style>
+        .msg404 {
+          position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 5em;font-family: 'Century Gothic'
+        }
+        a {color: #373277}
+      </style>
+    </head>
+    <body>
+      <div class="msg404">
+        <div>You've met with a terrible fate haven't you ?</div>
+        <a href="/">Get back home</a>
+      </div>
+    </script>
+  </body>
+  </html>
+   `
+}
 
 function renderPage(appHtml) {
   return `
