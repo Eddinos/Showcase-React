@@ -59,7 +59,7 @@ export default class Project extends Component {
 
         <List technos={this.state.currentProject.technos} />
         <div className="refs">
-          <Reference className="source_ref" type="source" url={this.state.currentProject.source}/>
+          <Reference className="source_ref" type="source" url={this.state.currentProject.sourceCode}/>
           <Reference className="link_ref" type="web" url={this.state.currentProject.url}/>
         </div>
         <Link className="arrow arrow-left" to={`/portfolio/project/${this.getNavID('left')}`}>
