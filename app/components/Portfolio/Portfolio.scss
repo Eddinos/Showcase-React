@@ -41,7 +41,7 @@
 
 .swap-enter {
   opacity: 0.01;
-  transform: translateX(5em);
+  transform: translateX(-15em);
   transition: all .5s ease-in;
 }
 
@@ -58,5 +58,5 @@
 
 .swap-leave.swap-leave-active {
   opacity: 0;
-  transform: translateX(-5em);
+  transform: translateX(15em);
 }
