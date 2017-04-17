@@ -58,5 +58,8 @@ $spriteURL: '../../../tools/images/Technos-Sprite.png';
     &--Mongodb {
       background: url(#{$spriteURL}) -747px 0;
     }
+    &--Angular {
+      background: url(#{$spriteURL}) -219px 0;
+    }
   }
 }
