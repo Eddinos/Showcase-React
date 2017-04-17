@@ -26,7 +26,7 @@ export default class Portfolio extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/getProjects')
+    axios.get('https://snt-backend.herokuapp.com/api/getProjects')
     .then((response) => {
       // let ninos = React.Children.map(this.props.children, child => {
       //   if (React.isValidElement(child)) {
