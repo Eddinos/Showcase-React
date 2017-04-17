@@ -24,8 +24,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-laptop:before {
+  content: "\e900";
+}
+.icon-mobile:before {
+  content: "\e901";
+}
+.icon-desktop:before {
+  content: "\e956";
+}
+.icon-mobile2:before {
+  content: "\e958";
+}
 .icon-earth:before {
   content: "\e9ca";
+}
+.icon-circle-right:before {
+  content: "\ea42";
+}
+.icon-circle-left:before {
+  content: "\ea44";
 }
 .icon-share2:before {
   content: "\ea82";
