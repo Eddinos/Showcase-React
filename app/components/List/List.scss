@@ -1,7 +1,7 @@
 $spriteURL: '../../../tools/images/Technos-Sprite.png';
 .technos {
   &__list {
-    max-height: 300px;
+    max-height: 250px;
     width: 200px;
     padding: 0 20px;
     list-style: none;
@@ -51,6 +51,12 @@ $spriteURL: '../../../tools/images/Technos-Sprite.png';
     }
     &--VueJS {
       background: url(#{$spriteURL}) -658px 0;
+    }
+    &--React {
+      background: url(#{$spriteURL}) -141px 0;
+    }
+    &--Mongodb {
+      background: url(#{$spriteURL}) -747px 0;
     }
   }
 }
