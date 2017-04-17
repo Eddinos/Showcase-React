@@ -11,10 +11,15 @@ export default class Project extends Component {
     super(props);
 
     let newProject = props.projects[props.params.projectID-1];
+    let errorProject = false;
+    if(!newProject) {
+      errorProject = true;
+    }
     this.state = {
       projectID: props.params.projectID,
       query: props.location.query,
-      currentProject: newProject
+      currentProject: newProject,
+      errorProject: errorProject
     }
   }
 
@@ -53,21 +58,29 @@ export default class Project extends Component {
   render () {
     return (
       <div className="project" id="project" >
-        <h1 className="title">{this.state.currentProject.title}</h1>
-        <h4 className="description">{this.state.currentProject.longDescription}</h4>
-        <Progress percentageValue={this.state.currentProject.completion}/>
+        {this.state.errorProject ? (
+          <div className="noProject">
+            <div>There is no project for this ID !</div>
+            <span>Are you lost ? You should probably go back to the <a href="1">beginning of the list</a></span>
+          </div>
+        ) :
+        (<div>
+            <h1 className="title">{this.state.currentProject.title}</h1>
+            <h4 className="description">{this.state.currentProject.longDescription}</h4>
+            <Progress percentageValue={this.state.currentProject.completion}/>
 
-        <List technos={this.state.currentProject.technos} />
-        <div className="refs">
-          <Reference className="source_ref" type="source" url={this.state.currentProject.sourceCode}/>
-          <Reference className="link_ref" type="web" url={this.state.currentProject.url}/>
-        </div>
-        <Link className="arrow arrow-left" to={`/portfolio/project/${this.getNavID('left')}`}>
-          <span className="icon-circle-left"></span>
-        </Link>
-        <Link className="arrow arrow-right" to={`/portfolio/project/${this.getNavID('right')}`}>
-          <span className="icon-circle-right"></span>
-        </Link>
+            <List technos={this.state.currentProject.technos} />
+            <div className="refs">
+              <Reference className="source_ref" type="source" url={this.state.currentProject.sourceCode}/>
+              <Reference className="link_ref" type="web" url={this.state.currentProject.url}/>
+            </div>
+            <Link className="arrow arrow-left" to={`/portfolio/project/${this.getNavID('left')}`}>
+              <span className="icon-circle-left"></span>
+            </Link>
+            <Link className="arrow arrow-right" to={`/portfolio/project/${this.getNavID('right')}`}>
+              <span className="icon-circle-right"></span>
+            </Link>
+          </div>)}
       </div>
     )
   }
