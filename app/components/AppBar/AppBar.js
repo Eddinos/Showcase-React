@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ViewHeadLine from 'material-ui/svg-icons/action/view-headline';
+import logo from '../../../tools/images/ed.png';
 
 
 
@@ -53,6 +54,7 @@ export default class AppBar extends Component {
       }
       else {
         newState.barStyle.bgColor = 'rgba(0, 255, 255, 0.8)';
+        // Cte media query lulz
         var height = screen.width < 480 ? '6em' : '3em';
         newState.barStyle.height = height;
       }
@@ -67,18 +69,13 @@ export default class AppBar extends Component {
         height: this.state.barStyle.height,
         transition: 'height 0.7s, background-color 0.5s'
        }}>
-        <IconButton
-           className="menu-button"
-           iconStyle={style.icon}
-           style={style.medium}
-        >
-          <ViewHeadLine />
-        </IconButton>
+        <a href="/"  className="logo">
+          <img src={logo} alt="edcorp" style={{height: this.state.barStyle.height}}/>
+        </a>
         <div className="app-bar-navigation">
           <IndexLink activeClassName="active" to="/" className="nav-button">Home</IndexLink>
 
           <NavLink activeClassName="active" to="/portfolio" className="nav-button">Portfolio</NavLink>
-          <span className="nav-button">Saucisse</span>
           {/* <span className="nav-button">Douze</span>
           <span className="nav-button">Mesures</span>
           <span className="nav-button">De Guerre</span> */}
