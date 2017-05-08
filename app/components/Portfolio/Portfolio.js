@@ -9,6 +9,7 @@ import DataContainer from '../DataContainer/DataContainer';
 import axios from 'axios';
 import { Link } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import config from "../../../config";
 
 const Intro = () => (
   <div className="intro content-text">
@@ -26,7 +27,7 @@ export default class Portfolio extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://snt-backend.herokuapp.com/api/getProjects')
+    axios.get(config.projectsAPI)
     .then((response) => {
       this.setState({projects: response.data.projects})
     })
