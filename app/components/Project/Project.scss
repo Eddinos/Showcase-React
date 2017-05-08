@@ -1,0 +1,64 @@
+.project {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'LatoWebSemiBold';
+  .title {
+    margin-left: 25%;
+  }
+  .description {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+  }
+
+  .progress_bar {
+    position: relative;
+    top: 0px;
+    right: 35px;
+  }
+
+  .technos {
+    position: absolute;
+    left: 20%;
+    max-width: 30%;
+  }
+
+  .refs {
+    position: absolute;
+    left: 65%;
+    max-width: 30%;
+  }
+
+  .arrow {
+    text-decoration: none;
+    color: black;
+    font-size: 3em;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+    &-left {
+      left: 0;
+    }
+    &-right {
+      right: 0;
+    }
+  }
+
+  .noProject {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+  }
+}

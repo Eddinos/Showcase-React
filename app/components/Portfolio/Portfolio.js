@@ -5,71 +5,11 @@ import './Portfolio.scss';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
 import Presenter from '../Presenter/Presenter';
-
-{/* <NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/isaiah-thomas.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/wolves-garnett.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/hamilton-pistons.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink>
-<NavLink to="/pikachu" className="project-card">
-  <Card
-    source="http://www.basketusa.com/wp-content/uploads/2017/02/lou-williams-lakers.jpg"
-    title="The last project"
-    description="Wow much cool great job such engineer"
-
-  />
-</NavLink> */}
+import DataContainer from '../DataContainer/DataContainer';
+import axios from 'axios';
+import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import config from "../../../config";
 
 const Intro = () => (
   <div className="intro content-text">
@@ -82,37 +22,49 @@ export default class Portfolio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      proyectos: []
     }
   }
 
   componentDidMount() {
+    axios.get(config.projectsAPI)
+    .then((response) => {
+      this.setState({projects: response.data.projects})
+    })
+    .catch((error) => {
+      console.log(error.message);
+    })
+
    // initialization of projects displayed in presenter
    var loadedProjects = [];
-   loadedProjects.push({
-     source: "http://www.basketusa.com/wp-content/uploads/2017/02/cousins-davis-1-570x325.jpg",
-     title: "The Last Project",
-     description: "Wow much cool great job such engineer"
-   },
+   loadedProjects.push(
    {
-     source: "http://www.basketusa.com/wp-content/uploads/2017/02/durant-harden-westbrook-2-570x325.jpg",
-     title: 'Another one',
-     description: "Wow much cool great job such engineer"
-   },
-   {
-     source: "http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg",
-     title: "The last project",
-     description: "Wow much cool great job such engineer"
-   },
-   {
-     source: "http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg",
-     title: "The last project",
-     description: "Wow much cool great job such engineer"
-   });
-   this.setState({projects: loadedProjects});
+     source: "http://www.basketusa.com/wp-content/uploads/2017/03/kobe-shaq.jpg",
+     title: 'Kobe & Shaq',
+     description: "They're here for testing purpose only ! Don't click !"
+   }
+ );
+   this.setState({proyectos: loadedProjects});
   }
 
   render () {
+    if (!this.state.projects) {
+      return (
+        <div className="portfolio">
+          <figure className="portfolio-header">
+            <img src={titlePic} alt="portfolio header" className="header-img"/>
+            <figcaption className="header-caption">
+              <h1 className="title">
+                My projects
+              </h1>
+            </figcaption>
+          </figure>
+
+          <Intro/>
+        </div>
+      )
+    }
+    let page = this.props.location.pathname;
     return (
       <div className="portfolio">
         <figure className="portfolio-header">
@@ -126,10 +78,24 @@ export default class Portfolio extends Component {
 
         <Intro/>
 
+        {/* Too bad but I can't think of a better solution right now
+          <DataContainer url="http://numbersapi.com/random/trivia"> */}
+
         <Presenter>
           {this.state.projects.map((item, key) => {
+              return (
+                <Link to={"/portfolio/project/" + item.id + "#project"} key={key}>
+                  <Card
+                    source={item.media}
+                    title={item.title}
+                    description={item.shortDescription}
+                  />
+                </Link>
+              )
+            })}
+          {this.state.proyectos.map((item, key) => {
             return (
-              <NavLink to="/pikachu" className="project-card" key={key}>
+              <NavLink to="/pikachu" key={key}>
                 <Card
                   source={item.source}
                   title={item.title}
@@ -140,7 +106,20 @@ export default class Portfolio extends Component {
           })}
         </Presenter>
 
+        {this.props.children &&
+          <div className="project-display">
+            <ReactCSSTransitionGroup
+              transitionName="swap"
+              transitionEnterTimeout={900}
+              transitionLeaveTimeout={900}
+            >
+                {React.cloneElement(React.Children.only(this.props.children), {key: page, projects: this.state.projects })}
+            </ReactCSSTransitionGroup>
+          </div>
+        }
 
+
+        {/* </DataContainer> */}
       </div>
     )
   }

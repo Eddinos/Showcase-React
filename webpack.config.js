@@ -57,6 +57,8 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  debug: true,
+  devtool: 'source-map',
   devServer: {
     contentBase: './dist',
     hot: true
