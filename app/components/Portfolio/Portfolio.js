@@ -42,16 +42,6 @@ export default class Portfolio extends Component {
      source: "http://www.basketusa.com/wp-content/uploads/2017/03/kobe-shaq.jpg",
      title: 'Kobe & Shaq',
      description: "They're here for testing purpose only ! Don't click !"
-  //  },
-  //  {
-  //    source: "http://www.basketusa.com/wp-content/uploads/2017/02/davis-asg.jpg",
-  //    title: "The last project",
-  //    description: "Wow much cool great job such engineer"
-  //  },
-  //  {
-  //    source: "http://www.basketusa.com/wp-content/uploads/2017/02/derrick-rose-2-1-570x325.jpg",
-  //    title: "The last project",
-  //    description: "Wow much cool great job such engineer"
    }
  );
    this.setState({proyectos: loadedProjects});
@@ -120,8 +110,8 @@ export default class Portfolio extends Component {
           <div className="project-display">
             <ReactCSSTransitionGroup
               transitionName="swap"
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
+              transitionEnterTimeout={900}
+              transitionLeaveTimeout={900}
             >
                 {React.cloneElement(React.Children.only(this.props.children), {key: page, projects: this.state.projects })}
             </ReactCSSTransitionGroup>
