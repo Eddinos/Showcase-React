@@ -141,8 +141,9 @@ export default class Contact extends Component {
                   size={80}
                   style={{display: this.state.disableFields ? 'block' : 'none',
                           position: 'relative',
-                          left: '40%',
-                          top: '40%'
+                          left: '50%',
+                          top: '50%',
+                          transform: 'translate(-50%, -50%)'
                         }}
                 />
               </div>
