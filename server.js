@@ -52,7 +52,8 @@ function render404 () {
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Black Sardine shows off</title>
+      <title>Eddine shows off</title>
+      <link rel="icon" type="img/ico" href="tools\images\ed.ico">
       <style>
         .msg404 {
           position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 5em;font-family: 'Century Gothic'
@@ -77,7 +78,8 @@ function renderPage(appHtml) {
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Black Sardine shows off</title>
+      <title>Eddine shows off</title>
+      <link rel="icon" type="img/ico" href="tools\images\ed.ico">
       <link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     </head>
     <body>

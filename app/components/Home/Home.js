@@ -22,21 +22,13 @@ const Who = () => (
 const currentProjectID = 2;
 
 const What = () => (
-  // <div className="home-what content">
-  //   <div className="elements">
-  //     <div className="content-text">
-  //       <h4>My projects</h4>
-  //       <p>Check out my last realization, but also other school and personal works</p>
-  //     </div>
-      <NavLink to="/portfolio" className="prout">
-        <Card
-          source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
-          title="The last project"
-          description="Wow much cool great job such engineer"
-        />
-      </NavLink>
-  //   </div>
-  // </div>
+    <NavLink to="/portfolio" className="prout">
+      <Card
+        source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
+        title="Jahlil Okafor"
+        description="Give it time, it's hosted on free servers !"
+      />
+    </NavLink>
 )
 
 const Misc = () => (
@@ -79,7 +71,7 @@ export default class Home extends Component {
               <p>Check out my last realization, but also other school and personal works</p>
             </div>
             {this.state.currentProject ? (
-              <NavLink to={`/portfolio/project/${this.state.currentProject.id}`} className="prout">
+              <NavLink to={`/portfolio/project/${this.state.currentProject.id}`}>
                 <Card
                   source={this.state.currentProject.media}
                   title={this.state.currentProject.title}
