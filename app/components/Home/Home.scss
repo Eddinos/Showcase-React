@@ -45,10 +45,17 @@ body {
     height: 400px;
     width: auto;
   }
-  .bio {
+  .content-title {
     font-family: 'Galada';
     font-variant: normal;
     transform: rotate(-15deg);
+    font-size: 4em;
+  }
+  .content-text {
+    font-family: 'LatoWebSemiBold';
+  }
+  &__bio {
+    max-width: 50%;
   }
 }
 

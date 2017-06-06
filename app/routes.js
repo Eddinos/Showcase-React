@@ -5,6 +5,7 @@ import Pikachu from './components/Pikachu/Pikachu'
 import Home from './components/Home/Home'
 import Portfolio from './components/Portfolio/Portfolio'
 import Project from './components/Project/Project'
+import Resume from './components/Resume/Resume'
 
 module.exports = (
   <Route path="/" component={App}>
@@ -13,6 +14,7 @@ module.exports = (
     <Route path="/portfolio" component={Portfolio}>
       <Route path="project/:projectID" component={Project}/>
     </Route>
+    <Route path="/resume" component={Resume}/>
     {/*<IndexRoute component={Home}/>
     <Route path="/repos" component={Repos}>
       <Route path="/repos/:userName/:repoName" component={Repo}/>
