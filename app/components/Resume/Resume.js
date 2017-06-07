@@ -23,8 +23,10 @@ export default class Resume extends Component {
                 As simple as it gets, my resume available as a plain old PDF file
               </p>
             </div>
-            <a className="pdf" href={cvPDF} target="_blank">
+            <a className="pdfLink" href={cvPDF} target="_blank">
+              <div className="pdf">
                 <span className="icon-file-pdf"></span>
+              </div>
             </a>
           </div>
         </div>

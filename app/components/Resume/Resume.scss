@@ -11,12 +11,11 @@
       max-width: 40%;
     }
     .pdf {
-      font-size: 140px;
-      height: 140px;
-      text-decoration: none;
-      color: black;
+      font-size: 200px;
+      height: 200px;
+
       padding: 45px;
-      border: 7px solid black;
+      border: 8px solid black;
       border-radius: 50%;
       p {
         margin: 0;
@@ -24,11 +23,13 @@
       &:hover {
         background-color: #aaa;
         color: #eee;
-        border-color: #aaa;
+        border-color: #ccc;
       }
-      &__button {
-
-      }
+    }
+    .pdfLink {
+      text-decoration: none;
+      color: black;
+      border-radius: 50%;
     }
   }
 }
