@@ -2,6 +2,7 @@ import React from 'react';
 import { Component, PropTypes } from 'react';
 import './Resume.scss';
 import cvPDF from '../../../tools/cv.pdf'
+import Slider from '../Slider/Slider';
 
 export default class Resume extends Component {
   constructor(props) {
@@ -16,20 +17,24 @@ export default class Resume extends Component {
             Ma resume
           </h1>
         </div>
-        <div className="content">
-          <div className="elements">
-            <div className="content-text">
-              <p>
-                As simple as it gets, my resume available as a plain old PDF file
-              </p>
-            </div>
-            <a className="pdfLink" href={cvPDF} target="_blank">
-              <div className="pdf">
-                <span className="icon-file-pdf"></span>
+        <Slider direction="in" side="right">
+          <div className="content">
+            <div className="elements">
+              <div className="content-text">
+                <p>
+                  As simple as it gets, my resume available as a plain old PDF file
+                </p>
               </div>
-            </a>
+              <a className="pdfLink" href={cvPDF} target="_blank">
+                <div className="pdf">
+                  <span className="icon-file-pdf"></span>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
+        </Slider>
+
+
       </div>
     )
   }
