@@ -1,0 +1,46 @@
+.slider {
+}
+
+.inFromLeft {
+  animation: slideIn-left;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.inFromRight {
+  animation: slideIn-right;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.inFromTop {
+  animation: slideIn-top;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.inFromBottom {
+  animation: slideIn-bottom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideIn-left {
+  from {transform: translateX(-50%);}
+  to {transform: translateX(0%);}
+}
+
+@keyframes slideIn-right {
+  from {transform: translateX(50%);}
+  to {transform: translateX(0%);}
+}
+
+@keyframes slideIn-top {
+  from {transform: translateY(-50%);}
+  to {transform: translateY(0%);}
+}
+
+@keyframes slideIn-bottom {
+  from {transform: translateY(50%);}
+  to {transform: translateY(0%);}
+}
