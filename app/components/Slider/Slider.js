@@ -16,10 +16,13 @@ export default class Slider extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', () => { this.handleScroll(); });
+    findDOMNode(this).addEventListener('animationend', () => this.setState({done: true}))
   }
 
   handleScroll() {
-    this.checkVisible(findDOMNode(this)) ? this.setState({classes: this.state.animation}) : this.setState({classes: ''});
+    if (!this.state.done) {
+      this.checkVisible(findDOMNode(this)) ? this.setState({classes: this.state.animation}) : this.setState({classes: ''});
+    }
   }
 
   checkVisible(elm) {
@@ -34,7 +37,11 @@ export default class Slider extends Component {
 
   render() {
     let classes = `slider ${this.state.classes}`;
-    return (
+    return this.state.done ? (
+      <div className={classes}>
+        {React.cloneElement(this.props.children, {sliderDone: this.state.done})}
+      </div>
+    ) : (
       <div className={classes}>
         {this.props.children}
       </div>

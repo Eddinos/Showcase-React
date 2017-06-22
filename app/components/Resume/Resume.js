@@ -3,6 +3,7 @@ import { Component, PropTypes } from 'react';
 import './Resume.scss';
 import cvPDF from '../../../tools/cv.pdf'
 import Slider from '../Slider/Slider';
+import Skills from '../Skills/Skills';
 
 export default class Resume extends Component {
   constructor(props) {
@@ -10,6 +11,12 @@ export default class Resume extends Component {
   }
 
   render () {
+    let skills = [{techno: 'javascript',value: 75},
+    {techno: 'ES6',value: 60},
+    {techno: 'Angular',value: 80},
+    {techno: 'jQuery',value: 65},
+    {techno: 'React',value: 70}
+    ]
     return (
       <div className="resume">
         <div className="banner home-banner">
@@ -17,24 +24,25 @@ export default class Resume extends Component {
             Ma resume
           </h1>
         </div>
-        <Slider direction="in" side="right">
-          <div className="content">
-            <div className="elements">
-              <div className="content-text">
-                <p>
-                  As simple as it gets, my resume available as a plain old PDF file
-                </p>
-              </div>
-              <a className="pdfLink" href={cvPDF} target="_blank">
-                <div className="pdf">
-                  <span className="icon-file-pdf"></span>
-                </div>
-              </a>
+        <div className="content">
+          <div className="elements">
+            <div className="content-text">
+              <p>
+                As simple as it gets, my resume available as a plain old PDF file
+              </p>
             </div>
+            <a className="pdfLink" href={cvPDF} target="_blank">
+              <div className="pdf">
+                <span className="icon-file-pdf"></span>
+              </div>
+            </a>
           </div>
+        </div>
+        <Slider direction="in" side="left">
+          <Skills skills={skills}>
+
+          </Skills>
         </Slider>
-
-
       </div>
     )
   }
