@@ -1,0 +1,12 @@
+.skills {
+  .progress {
+    width: 60%;
+    background-color: grey;
+    display: inline-block;
+  }
+  .bar {
+    height: 60px;
+    background-color: orange;
+    transition: width 1s linear;
+  }
+}
