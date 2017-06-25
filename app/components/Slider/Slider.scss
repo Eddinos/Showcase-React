@@ -1,46 +1,44 @@
 .slider {
-}
-
-.inFromLeft {
-  animation: slideIn-left;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-}
+  visibility: hidden;
+  &.inFromLeft {
+    animation-name: slideIn-left;
+    visibility: visible;
+  }
 
-.inFromRight {
-  animation: slideIn-right;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
+  &.inFromRight {
+    animation-name: slideIn-right;
+    visibility: visible;
+  }
 
-.inFromTop {
-  animation: slideIn-top;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
+  &.inFromTop {
+    animation-name: slideIn-top;
+    visibility: visible;
+  }
 
-.inFromBottom {
-  animation: slideIn-bottom;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  &.inFromBottom {
+    animation-name: slideIn-bottom;
+    visibility: visible;
+  }
 }
 
 @keyframes slideIn-left {
-  from {transform: translateX(-50%);}
+  from {transform: translateX(-30%);}
   to {transform: translateX(0%);}
 }
 
 @keyframes slideIn-right {
-  from {transform: translateX(50%);}
+  from {transform: translateX(30%);}
   to {transform: translateX(0%);}
 }
 
 @keyframes slideIn-top {
-  from {transform: translateY(-50%);}
+  from {transform: translateY(-30%);}
   to {transform: translateY(0%);}
 }
 
 @keyframes slideIn-bottom {
-  from {transform: translateY(50%);}
+  from {transform: translateY(30%);}
   to {transform: translateY(0%);}
 }

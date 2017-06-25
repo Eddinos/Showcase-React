@@ -28,7 +28,7 @@ export default class Slider extends Component {
   checkVisible(elm) {
     var rect = elm.getBoundingClientRect();
     var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-    return !(rect.top - viewHeight >= 0);
+    return !(rect.top*1.5 - viewHeight >= 0);
   }
 
   makeCamelCase(s) {
