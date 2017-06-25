@@ -11,11 +11,18 @@ export default class Resume extends Component {
   }
 
   render () {
-    let skills = [{techno: 'javascript',value: 75},
-    {techno: 'ES6',value: 60},
+    let Fskills = [{techno: 'javascript',value: 75},
     {techno: 'Angular',value: 80},
     {techno: 'jQuery',value: 65},
-    {techno: 'React',value: 70}
+    {techno: 'React',value: 70},
+    {techno: "CSS", value: 75},
+    {techno: "Sass", value: 80}
+    ]
+    let Bskills = [{techno: 'C#',value: 55},
+    {techno: '.Net WebAPI 2',value: 60},
+    {techno: 'Node',value: 45},
+    {techno: "MongoDB", value: 35},
+    {techno: "SQL Server", value: 40}
     ]
     return (
       <div className="resume">
@@ -39,7 +46,12 @@ export default class Resume extends Component {
           </div>
         </div>
         <Slider direction="in" side="left">
-          <Skills skills={skills}>
+          <Skills skills={Fskills} barStyle={{backgroundColor: 'orange'}} title="Front-end skills">
+
+          </Skills>
+        </Slider>
+        <Slider direction="in" side="right">
+          <Skills skills={Bskills} barStyle={{backgroundColor: '#2191ff'}} title="Back-end skills">
 
           </Skills>
         </Slider>
