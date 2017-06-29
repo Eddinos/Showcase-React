@@ -29,10 +29,10 @@ export default class Skills extends Component {
               <tr>
                 <td></td>
                 <td className="table__legend">
-                  <div className="threshold">0%</div>
-                  <div className="threshold">25%</div>
-                  <div className="threshold">75%</div>
-                  <div className="threshold">100%</div>
+                  <div className="threshold">Newbie</div>
+                  <div className="threshold">Not bad</div>
+                  <div className="threshold">Alright</div>
+                  <div className="threshold">Master</div>
                 </td>
               </tr>
               {this.state.skills.map((item, key) => {

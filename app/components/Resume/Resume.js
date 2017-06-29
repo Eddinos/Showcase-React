@@ -5,25 +5,71 @@ import cvPDF from '../../../tools/cv.pdf'
 import Slider from '../Slider/Slider';
 import Skills from '../Skills/Skills';
 
+//TODO fetch it from server
+const skills = {
+  front: {
+    title: 'Front-end sills',
+    sliderSide: 'left',
+    barStyle: {backgroundColor: '#ff9125'},
+    technos: [
+      {techno: 'javascript',value: 75},
+      {techno: 'Angular',value: 80},
+      {techno: 'jQuery',value: 65},
+      {techno: 'React',value: 70},
+      {techno: "CSS", value: 75},
+      {techno: "Sass", value: 80}
+    ]
+  },
+  back: {
+    title: 'Back-end sills',
+    sliderSide: 'right',
+    barStyle: {backgroundColor: '#2191ff'},
+    technos: [
+      {techno: 'C#',value: 55},
+      {techno: '.Net WebAPI 2',value: 60},
+      {techno: 'Node',value: 45},
+      {techno: "MongoDB", value: 35},
+      {techno: "SQL Server", value: 40}
+    ]
+  },
+  tools: {
+    title: 'Tools and methodologies',
+    sliderSide: 'bottom',
+    barStyle: {backgroundColor: '#00e498'},
+    technos: [
+      {techno: 'Git', value: 80},
+      {techno: 'Agile methodology', value: 67},
+      {techno: 'Continuous integration', value: 75}
+    ]
+  }
+}
+
 export default class Resume extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      skills: skills
+    }
+  }
+
+  createSkillsComponents() {
+    let skillsComponents = [];
+    let skills = this.state.skills;
+    for (var skill in skills) {
+      if (skills.hasOwnProperty(skill)) {
+        skillsComponents.push(
+          <Slider direction="in" side={skills[skill].sliderSide} key={skill}>
+            <Skills skills={skills[skill].technos} barStyle={skills[skill].barStyle} title={skills[skill].title} />
+          </Slider>
+        )
+      }
+    }
+    return skillsComponents;
   }
 
   render () {
-    let Fskills = [{techno: 'javascript',value: 75},
-    {techno: 'Angular',value: 80},
-    {techno: 'jQuery',value: 65},
-    {techno: 'React',value: 70},
-    {techno: "CSS", value: 75},
-    {techno: "Sass", value: 80}
-    ]
-    let Bskills = [{techno: 'C#',value: 55},
-    {techno: '.Net WebAPI 2',value: 60},
-    {techno: 'Node',value: 45},
-    {techno: "MongoDB", value: 35},
-    {techno: "SQL Server", value: 40}
-    ]
+    let skillsComponents = this.createSkillsComponents();
+
     return (
       <div className="resume">
         <div className="banner home-banner">
@@ -45,16 +91,9 @@ export default class Resume extends Component {
             </a>
           </div>
         </div>
-        <Slider direction="in" side="left">
-          <Skills skills={Fskills} barStyle={{backgroundColor: 'orange'}} title="Front-end skills">
-
-          </Skills>
-        </Slider>
-        <Slider direction="in" side="right">
-          <Skills skills={Bskills} barStyle={{backgroundColor: '#2191ff'}} title="Back-end skills">
-
-          </Skills>
-        </Slider>
+        {
+          skillsComponents
+        }
       </div>
     )
   }
