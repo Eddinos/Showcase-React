@@ -30,8 +30,8 @@ export default class Skills extends Component {
                 <td></td>
                 <td className="table__legend">
                   <div className="threshold">Newbie</div>
-                  <div className="threshold">Not bad</div>
-                  <div className="threshold">Alright</div>
+                  <div className="threshold">Experienced</div>
+                  <div className="threshold">Confirmed</div>
                   <div className="threshold">Master</div>
                 </td>
               </tr>

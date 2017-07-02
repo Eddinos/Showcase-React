@@ -4,6 +4,7 @@ import './Resume.scss';
 import cvPDF from '../../../tools/cv.pdf'
 import Slider from '../Slider/Slider';
 import Skills from '../Skills/Skills';
+import Duo from '../Duo/Duo';
 
 //TODO fetch it from server
 const skills = {
@@ -37,12 +38,34 @@ const skills = {
     sliderSide: 'bottom',
     barStyle: {backgroundColor: '#00e498'},
     technos: [
-      {techno: 'Git', value: 80},
+      {techno: 'Git, Gitflow', value: 80},
       {techno: 'Agile methodology', value: 67},
-      {techno: 'Continuous integration', value: 75}
+      {techno: 'Continuous integration', value: 75},
+      {techno: 'responsive design', value: 50},
+      {techno: 'UX development', value: 30}
     ]
   }
 }
+
+const PdfLink = (props) => {
+  return (
+    <a className="pdfLink" href={cvPDF} target="_blank">
+      <div className="pdf">
+        <span className="icon-file-pdf"></span>
+      </div>
+    </a>
+  )
+}
+const PdfText = (props) => {
+  return (
+    <div className="content-text">
+      <p>
+        As simple as it gets, my resume available as a plain old PDF file
+      </p>
+    </div>
+  )
+}
+const pdfStyle = {background: '#f9f9f9', padding: '15vh 0'};
 
 export default class Resume extends Component {
   constructor(props) {
@@ -55,11 +78,11 @@ export default class Resume extends Component {
   createSkillsComponents() {
     let skillsComponents = [];
     let skills = this.state.skills;
-    for (var skill in skills) {
-      if (skills.hasOwnProperty(skill)) {
+    for (var type in skills) {
+      if (skills.hasOwnProperty(type)) {
         skillsComponents.push(
-          <Slider direction="in" side={skills[skill].sliderSide} key={skill}>
-            <Skills skills={skills[skill].technos} barStyle={skills[skill].barStyle} title={skills[skill].title} />
+          <Slider direction="in" side={skills[type].sliderSide} key={type}>
+            <Skills skills={skills[type].technos} barStyle={skills[type].barStyle} title={skills[type].title} />
           </Slider>
         )
       }
@@ -77,23 +100,10 @@ export default class Resume extends Component {
             Ma resume
           </h1>
         </div>
-        <div className="content">
-          <div className="elements">
-            <div className="content-text">
-              <p>
-                As simple as it gets, my resume available as a plain old PDF file
-              </p>
-            </div>
-            <a className="pdfLink" href={cvPDF} target="_blank">
-              <div className="pdf">
-                <span className="icon-file-pdf"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-        {
-          skillsComponents
-        }
+        <Duo eltLeft={<PdfText />} eltRight={<PdfLink />} style={pdfStyle}/>
+        {skillsComponents}
+        <h1 className="content-text">Work Experiences</h1>
+        <Duo eltLeft={(() => <div>Wow</div>)()} />
       </div>
     )
   }

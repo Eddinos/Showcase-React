@@ -11,26 +11,28 @@
     .content-text {
       max-width: 40%;
     }
-    .pdf {
-      font-size: 200px;
-      height: 200px;
 
-      padding: 45px;
-      border: 8px solid black;
-      border-radius: 50%;
-      p {
-        margin: 0;
-      }
-      &:hover {
-        background-color: #aaa;
-        color: #eee;
-        border-color: #ccc;
-      }
-    }
-    .pdfLink {
-      text-decoration: none;
-      color: black;
-      border-radius: 50%;
-    }
+  }
+}
+
+.pdf {
+  font-size: 200px;
+  height: 200px;
+
+  padding: 45px;
+  border: 8px solid black;
+  border-radius: 50%;
+  p {
+    margin: 0;
+  }
+  &:hover {
+    background-color: #aaa;
+    color: #eee;
+    border-color: #ccc;
+  }
+  &Link {
+    text-decoration: none;
+    color: black;
+    border-radius: 50%;
   }
 }
