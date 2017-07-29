@@ -1,0 +1,34 @@
+.experience {
+  font-family: 'LatoWebSemiBold';
+  .jobTitle {
+    font-size: 1.7em;
+    text-align: center;
+    width: 67%;
+  }
+  .description {
+    text-align: center;
+    font-size: 1.2em;
+    white-space: pre-line;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .duration {
+    width: 20%;
+    &--from {
+
+    }
+    &--to {
+
+    }
+  }
+  .separator {
+    width: 100%;
+    border-bottom-style: solid;
+    border-width: thin;
+    margin-bottom: 5%;
+    color: #DDD;
+  }
+}
