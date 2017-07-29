@@ -5,7 +5,10 @@ import cvPDF from '../../../tools/cv.pdf'
 import Slider from '../Slider/Slider';
 import Skills from '../Skills/Skills';
 import Duo from '../Duo/Duo';
+import Experience from '../Experience/Experience';
 import ARTLogicsLogo from '../../../tools/images/ARTLogics.png';
+import SopraSteriaLogo from '../../../tools/images/sopra.jpeg';
+import OmnilogLogo from '../../../tools/images/logo-omnilog.png';
 
 //TODO fetch it from server
 const skills = {
@@ -79,7 +82,7 @@ const experiences = [
     }
   },
   {
-    logo: ARTLogicsLogo,
+    logo: SopraSteriaLogo,
     title: "End of studies project as a full-stack web developer at Sopra Steria Lyon, France",
     text: "Working within a development team realizing a web application on the behalf of the major electrical company in France, following an agile scrum methodology. Development of new features thanks to AngularJS and .Net WebAPI2 \\nWorked with Git, Jira, Jenkins, SonarQube, NPM, Bower and Gulp",
     duration: {
@@ -88,9 +91,9 @@ const experiences = [
     }
   },
   {
-    logo: ARTLogicsLogo,
+    logo: OmnilogLogo,
     title: "Front-end engineer at Omnilog in Paris, France",
-    text: "Technical assistance with our customer L'&Eacutequipe (www.lequipe.fr), the leading sports newspaper in France, to improve its main website and other web projects. \\nDevelopment of new projects, maintenance of older features",
+    text: "Technical assistance with our customer L'Équipe (www.lequipe.fr), the leading sports newspaper in France, to improve its main website and take part in other web projects. \\nDevelopment of new projects, maintenance of older features",
     duration: {
       from: "03/2017",
       to: ""
@@ -123,8 +126,10 @@ export default class Resume extends Component {
 
   createXpComponents() {
     return experiences.map((item, key) => {
-      var eltLeft = key%2 === 0 ? <img src={item.logo} alt=""/> : <div className="content-text">{item.title}</div>;
-      var eltRight = key%2 !== 0 ? <img src={item.logo} alt=""/> : <div className="content-text">{item.title}</div>;
+      let logoCmpnt = <img className="xpLogo" src={item.logo} alt=""/>;
+      let description = <Experience data={item} key={key}> banana </Experience>//<div className="content-text">{item.title}</div>;
+      var eltLeft = key%2 === 0 ? logoCmpnt : description ;
+      var eltRight = key%2 !== 0 ? logoCmpnt : description;
       return (
         <Duo
           style={{padding: '5vh 0'}}
