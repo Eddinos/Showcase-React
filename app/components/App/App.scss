@@ -4,3 +4,22 @@
   text-align: center;
   font-variant: small-caps;
 }
+
+.mid-title {
+  text-align: start;
+  padding-left: 30%;
+  padding: 3vh 30vw;
+  color: white;
+  &--blue {
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  }
+  &--orange {
+    background: linear-gradient(141deg, #ff9125 0%, #1fc8db 75%);
+  }
+  &--green {
+
+  }
+  &--thin {
+    padding: 0 30vw;
+  }
+}
