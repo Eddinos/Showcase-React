@@ -151,7 +151,7 @@ export default class Resume extends Component {
         </div>
         <Duo eltLeft={<PdfText />} eltRight={<PdfLink />} style={pdfStyle}/>
         {this.createSkillsComponents()}
-        <h1 className="content-text">Work Experiences</h1>
+        <h1 className="content-text mid-title mid-title--blue">Work Experiences</h1>
         {this.createXpComponents()}
         <div style={{height: '200px'}}></div>
       </div>

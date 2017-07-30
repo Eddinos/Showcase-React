@@ -17,7 +17,7 @@ export default class Experience extends Component {
           <div className="duration">
             <div className="duration--from">From: {this.state.duration.from}</div>
             <br/>
-            <div className="duration--to">To: {this.state.duration.to}</div>
+            <div className="duration--to">To: {this.state.duration.to || 'still going !'}</div>
           </div>
         </div>
         <div className="separator"></div>

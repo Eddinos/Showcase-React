@@ -22,7 +22,7 @@ export default class Skills extends Component {
   render () {
     return (
       <div className="skills">
-        <div className="content-text">{this.props.title}</div>
+        <div className="content-text mid-title mid-title--orange mid-title--thin">{this.props.title}</div>
         {this.state.skills ? (
           <table className="skills__table">
             <tbody>
