@@ -4,6 +4,9 @@
     font-size: 1.7em;
     text-align: center;
     width: 67%;
+    @media (max-device-width: 480px) {
+      font-size: 3em;
+    }
   }
   .description {
     text-align: center;
@@ -14,14 +17,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-device-width: 480px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
   .duration {
     width: 20%;
     &--from {
-
+      @media (max-device-width: 480px) {
+        display: inline;
+      }
     }
-    &--to {
-
+    &--to {}
+    @media (max-device-width: 480px) {
+      width: 100%;
+      margin-bottom: 3vh;
     }
   }
   .separator {
@@ -30,5 +41,10 @@
     border-width: thin;
     margin-bottom: 5%;
     color: #DDD;
+    @media (max-device-width: 480px) {
+      width: 90%;
+      border-width: medium;
+      margin-left: 5%;
+    }
   }
 }

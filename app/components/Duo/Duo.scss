@@ -14,3 +14,13 @@
     }
   }
 }
+
+@media (max-device-width: 480px) {
+  .duo {
+    flex-direction: column;
+    &__element {
+      max-width: none;
+      margin: auto;
+    }
+  }
+}
