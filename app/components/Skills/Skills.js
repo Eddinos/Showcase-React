@@ -32,7 +32,7 @@ export default class Skills extends Component {
                   <div className="threshold">Newbie</div>
                   <div className="threshold">Experienced</div>
                   <div className="threshold">Confirmed</div>
-                  <div className="threshold">Master</div>
+                  <div className="threshold">Not bad</div>
                 </td>
               </tr>
               {this.state.skills.map((item, key) => {
