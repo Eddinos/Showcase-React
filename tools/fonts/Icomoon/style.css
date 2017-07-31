@@ -72,3 +72,6 @@
 .icon-reddit:before {
   content: "\eac6";
 }
+.icon-file-pdf:before {
+  content: "\eadf";
+}

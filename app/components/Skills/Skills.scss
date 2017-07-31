@@ -1,0 +1,33 @@
+.skills {
+  .progress {
+    width: 90%;
+    background: #f9f9f9;
+  }
+  .bar {
+    height: 40px;
+    transition: width 1s linear;
+  }
+  &__table {
+    width: 100%;
+    padding: 6vh 0 10vh;
+    .table {
+      &__item {
+        width: 50%;
+      }
+      &__legend {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        font-family: 'LatoWebSemibold'
+      }
+    }
+  }
+}
+
+@media (max-device-width: 640px) {
+  .skills {
+    .bar {
+      transition-duration: 0.67s;
+    }
+  }
+}

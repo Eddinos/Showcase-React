@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import AppBar from '../AppBar/AppBar';
 import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
+import cv from '../../../tools/cv.pdf';
 import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
 import Card from '../Card/Card';
@@ -14,8 +15,13 @@ import config from "../../../config";
 
 const Who = () => (
   <div className="home-who content">
-    <img src={pp} alt="dinosir"/>
-    <p className="bio content-text">I'm a dino sir</p>
+    <a href="/resume">
+      <img src={pp} alt="dinosir"/>
+    </a>
+    <div className="home-who__bio">
+      <h3 className="content-title">Trust me, I'm an engineer</h3>
+      <p className="content-text">Web development enthusiast, basketball player,  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+    </div>
   </div>
 )
 

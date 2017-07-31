@@ -1,0 +1,50 @@
+.experience {
+  font-family: 'LatoWebSemiBold';
+  .jobTitle {
+    font-size: 1.7em;
+    text-align: center;
+    width: 67%;
+    @media (max-device-width: 480px) {
+      font-size: 3em;
+    }
+  }
+  .description {
+    text-align: center;
+    font-size: 1.2em;
+    white-space: pre-line;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-device-width: 480px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  .duration {
+    width: 20%;
+    &--from {
+      @media (max-device-width: 480px) {
+        display: inline;
+      }
+    }
+    &--to {}
+    @media (max-device-width: 480px) {
+      width: 100%;
+      margin-bottom: 3vh;
+    }
+  }
+  .separator {
+    width: 100%;
+    border-bottom-style: solid;
+    border-width: thin;
+    margin-bottom: 5%;
+    color: #DDD;
+    @media (max-device-width: 480px) {
+      width: 90%;
+      border-width: medium;
+      margin-left: 5%;
+    }
+  }
+}

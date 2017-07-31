@@ -1,0 +1,26 @@
+.duo {
+  padding: 25vh 0 25vh 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  &__element {
+    max-width: 40%;
+    display: flex;
+    &--left {
+
+    }
+    &--right {
+
+    }
+  }
+}
+
+@media (max-device-width: 480px) {
+  .duo {
+    flex-direction: column;
+    &__element {
+      max-width: none;
+      margin: auto;
+    }
+  }
+}
