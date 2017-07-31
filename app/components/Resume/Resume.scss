@@ -1,7 +1,17 @@
+
+
 .resume {
   overflow: hidden;
   .banner {
-    background: #3b682c;
+    background: url('../../../tools/images/venice_desktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media (min-device-width: 1800px) {
+      background-position-y: -120px;
+    }
+    @media (max-device-width: 640) {
+      background-position-x: -750px;
+    }
     .header {
     }
   }
