@@ -14,6 +14,10 @@ export default class Slider extends Component {
     }
   }
 
+  shouldComponentUpdate() {
+    return this.checkVisible();
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', () => { this.handleScroll(); });
     findDOMNode(this).addEventListener('animationend', () => this.setState({done: true}))
@@ -21,11 +25,12 @@ export default class Slider extends Component {
 
   handleScroll() {
     if (!this.state.done) {
-      this.checkVisible(findDOMNode(this)) ? this.setState({classes: this.state.animation}) : this.setState({classes: ''});
+      this.checkVisible() ? this.setState({classes: this.state.animation}) : this.setState({classes: ''});
     }
   }
 
-  checkVisible(elm) {
+  checkVisible() {
+    var elm = findDOMNode(this);
     var rect = elm.getBoundingClientRect();
     var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
     return !(rect.top*1.5 - viewHeight >= 0);
@@ -37,7 +42,9 @@ export default class Slider extends Component {
 
   render() {
     let classes = `slider ${this.state.classes}`;
-    return this.state.done ? (
+    /* When animation is done, send a custom prop to the children to warn them,
+     unless they are not a React cpt (typeof = function) */
+    return this.state.done && typeof this.props.children.type !== 'string' ? (
       <div className={classes}>
         {React.cloneElement(this.props.children, {sliderDone: this.state.done})}
       </div>
