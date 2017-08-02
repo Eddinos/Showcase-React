@@ -14,18 +14,27 @@ export default class Slider extends Component {
     }
   }
 
-  shouldComponentUpdate() {
-    return this.checkVisible();
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.state.handleScrollBind)
+  }
+
+  shouldComponentUpdate(props, state) {
+    return this.checkVisible() || state.done;
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', () => { this.handleScroll(); });
-    findDOMNode(this).addEventListener('animationend', () => this.setState({done: true}))
+    this.setState({handleScrollBind: this.handleScroll.bind(this)},
+     ()=>{window.addEventListener('scroll', this.state.handleScrollBind);}
+   );
+
+    findDOMNode(this).addEventListener('animationend', () => this.setState({done: true}) )
   }
 
   handleScroll() {
     if (!this.state.done) {
-      this.checkVisible() ? this.setState({classes: this.state.animation}) : this.setState({classes: ''});
+      if (this.checkVisible()) {
+        this.setState({classes: this.state.animation})
+      }
     }
   }
 
