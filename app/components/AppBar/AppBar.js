@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ViewHeadLine from 'material-ui/svg-icons/action/view-headline';
+import Clear from 'material-ui/svg-icons/content/clear';
 import logo from '../../../tools/images/ed.png';
 
 
@@ -27,11 +28,16 @@ const style = {
 export default class AppBar extends Component {
   constructor(props) {
     super(props);
+    let burgerStyleMedium = Object.assign({}, style.medium);
+    let closeStyleMedium = Object.assign({display: 'none'}, style.medium);
+
     this.state = {
       barStyle: {
         bgColor: '',
         height: '9em'
-      }
+      },
+      burgerStyle: burgerStyleMedium,
+      closeStyle: closeStyleMedium
     };
   }
 
@@ -45,6 +51,7 @@ export default class AppBar extends Component {
   }
 
   // Trying not to mess with state object in case I make it richer later
+  // Obviously I didnt understand how setState worked when i wrote that
   handleScroll () {
     this.setState((prevState, props) => {
       var newState = prevState;
@@ -60,6 +67,14 @@ export default class AppBar extends Component {
       }
     })
 
+  }
+
+  displayMobileMenu(show) {
+    this.setState((state, props) => {
+      state.burgerStyle.display = show ? 'none' : 'block';
+      state.closeStyle.display = show ? 'block' : 'none';
+      document.querySelector('.mobile-menu').style.display = show ? 'block' : 'none'
+    })
   }
 
   render () {
@@ -79,7 +94,33 @@ export default class AppBar extends Component {
           <NavLink activeClassName="active" to="/resume" className="nav-button">Resume</NavLink>
 
         </div>
+        <div className="app-bar-nav-mobile">
+          <IconButton
+           className="menu-button--burger"
+           iconStyle={style.icon}
+           style={this.state.burgerStyle}
+           onClick={() => {this.displayMobileMenu(true)}}
+          >
+            <ViewHeadLine />
+          </IconButton>
 
+          <IconButton
+           className="menu-button--cross"
+           iconStyle={style.icon}
+           style={this.state.closeStyle}
+           onClick={() => {this.displayMobileMenu(false)}}
+          >
+            <Clear />
+          </IconButton>
+        </div>
+        <div className="mobile-menu">
+          <div className="nav">
+            <IndexLink onClick={() => {this.displayMobileMenu(false)}} activeClassName="active" to="/" className="nav-button">Home</IndexLink>
+
+            <NavLink onClick={() => {this.displayMobileMenu(false)}} activeClassName="active" to="/portfolio" className="nav-button">Portfolio</NavLink>
+            <NavLink onClick={() => {this.displayMobileMenu(false)}} activeClassName="active" to="/resume" className="nav-button">Resume</NavLink>
+          </div>
+        </div>
       </div>
     );
   }

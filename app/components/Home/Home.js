@@ -15,7 +15,7 @@ import config from "../../../config";
 
 const Who = () => (
   <div className="home-who content">
-    <a href="/resume">
+    <a href="/resume" className="profilePicture">
       <img src={pp} alt="dinosir"/>
     </a>
     <div className="home-who__bio">

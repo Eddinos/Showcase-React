@@ -41,10 +41,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  img {
+  .profilePicture {
     border-radius: 50%;
     height: 400px;
     width: auto;
+    img {
+      border-radius: inherit;
+      height: inherit;
+    }
   }
   .content-title {
     font-family: 'Galada';
