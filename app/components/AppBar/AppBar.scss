@@ -1,3 +1,5 @@
+// TODO Refactor this entire file/component
+
 .nav-button {
   font-variant: small-caps;
   font-family: 'LatoWebSemibold';
@@ -16,9 +18,8 @@
   margin-right: 2em;
   justify-content: space-around;
   display: flex;
-  width: 20%;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
   z-index: 1000;
   @media (max-device-width: 480px) {
     display: none;
@@ -69,7 +70,7 @@
   width: 100vw;
   height: 200vh;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.9;
   position: fixed;
   display: none;
   .nav {
@@ -81,6 +82,9 @@
     font-size: 50px;
     .nav-button {
       display: block;
+      &:not(.active) {
+        color: white;
+      }
     }
   }
 }

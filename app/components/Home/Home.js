@@ -10,24 +10,32 @@ import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
+import Duo from '../Duo/Duo';
 import axios from 'axios';
 import config from "../../../config";
 
-const Who = () => (
-  <div className="home-who content">
-    <a href="/resume" className="profilePicture">
-      <img src={pp} alt="dinosir"/>
-    </a>
+
+const Who = () => {
+  const picture = (<a href="/resume" className="profilePicture">
+                    <img src={pp} alt="dinosir"/>
+                  </a>);
+  const text = (
     <div className="home-who__bio">
       <h3 className="content-title">Trust me, I'm an engineer</h3>
-      <p className="content-text">Web development enthusiast, basketball player,  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+      <p className="content-text">Basketball legend, web development genius, blabla lorem ipsum lorem ipsum who reads these self-descriptions anyway</p>
     </div>
-  </div>
-)
+  );
+  return (
+    <Duo className="home-who content"
+      eltLeft = {picture}
+      eltRight = {text}
+    />
+  )
+}
 
 const currentProjectID = 2;
 
-const What = () => (
+const WhatPlaceHolder = () => (
     <NavLink to="/portfolio" className="prout">
       <Card
         source="http://www.basketusa.com/wp-content/uploads/2017/02/okafor-1.jpg"
@@ -36,12 +44,32 @@ const What = () => (
       />
     </NavLink>
 )
-
-const Misc = () => (
-  <div className="home-misc content">
-    <p className="content-text">Thank god for these rap recordings <br/>I can ball like him on every verse and chorus</p>
-  </div>
-)
+const What = (props) => {
+  var text = (
+    <div className="content-text">
+      <h4>My projects</h4>
+      <p>Check out my last realization, but also other school and personal works</p>
+      <NavLink to='/portfolio' className="moreButton">See more projects</NavLink>
+    </div>
+  );
+  var exemple = props.currentProject ? (
+      <NavLink to={`/portfolio/project/${props.currentProject.id}`}>
+        <Card
+          source={props.currentProject.media}
+          title={props.currentProject.title}
+          description={props.currentProject.shortDescription}
+        />
+      </NavLink>
+    ) : (
+      <WhatPlaceHolder />
+    );
+  return (
+    <Duo className="home-what content"
+      eltLeft = {text}
+      eltRight = {exemple}
+    />
+  )
+}
 
 
 
@@ -70,29 +98,10 @@ export default class Home extends Component {
           <div className="title">Welcome to my sh*t</div>
         </div>
         <Who />
-        <div className="home-what content">
-          <div className="elements">
-            <div className="content-text">
-              <h4>My projects</h4>
-              <p>Check out my last realization, but also other school and personal works</p>
-            </div>
-            {this.state.currentProject ? (
-              <NavLink to={`/portfolio/project/${this.state.currentProject.id}`}>
-                <Card
-                  source={this.state.currentProject.media}
-                  title={this.state.currentProject.title}
-                  description={this.state.currentProject.shortDescription}
-                />
-              </NavLink>
-            ) : (
-              <What />
-            )}
 
-          </div>
-        </div>
-        {/* <Misc /> */}
+        <What currentProject={this.state.currentProject}/>
+
         <Contact />
-
 
         {/* <Map /> */}
       </div>

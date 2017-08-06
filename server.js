@@ -79,12 +79,12 @@ function renderPage(appHtml) {
     <head>
       <meta charset="utf-8">
       <title>Eddine shows off</title>
-      <link rel="icon" type="img/ico" href="tools\images\ed.ico">
+      <link rel="icon" type="img/ico" href="/tools/images/ed.ico">
       <link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     </head>
     <body>
       <div id='root'/>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByH0c5bxYDZ48BLQ401BBsm4DppG6QNkQ"></script>
+      <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByH0c5bxYDZ48BLQ401BBsm4DppG6QNkQ"></script> -->
       <script src="/bundle.js"></script>
 
     </script>

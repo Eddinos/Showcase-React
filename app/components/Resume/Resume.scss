@@ -21,7 +21,14 @@
     .content-text {
       max-width: 40%;
     }
+  }
 
+  @media (max-device-width: 480px) {
+    .duo:nth-child(2n) {
+      .duo__element--left {
+        order: 2;
+      }
+    }
   }
 }
 
@@ -49,13 +56,7 @@
 
 }
 
-@media (max-device-width: 480px) {
-  .duo:nth-child(2n) {
-    .duo__element--left {
-      order: 2;
-    }
-  }
-}
+
 
 .xpLogo {
   max-width: 45vw;
