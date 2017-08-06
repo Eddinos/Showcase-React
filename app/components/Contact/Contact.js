@@ -10,6 +10,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 import CircularProgress from 'material-ui/CircularProgress';
+import Duo from '../Duo/Duo';
 import './Contact.scss';
 
 export default class Contact extends Component {
@@ -29,20 +30,12 @@ export default class Contact extends Component {
     return { muiTheme: getMuiTheme(baseTheme) };
   }
 
-  handleOpenRFD () {
-    this.setState({ openRequiredFieldsDialog: true });
+  handleRFD (show) {
+    this.setState({ openRequiredFieldsDialog: show });
   }
 
-  handleCloseRFD () {
-    this.setState({ openRequiredFieldsDialog: false });
-  }
-
-  handleOpenMSS () {
-    this.setState({ openMsgSentSnackbar: true });
-  }
-
-  handleCloseMSS () {
-    this.setState({ openMsgSentSnackbar: false });
+  handleMSS (show) {
+    this.setState({ openMsgSentSnackbar: show });
   }
 
   makeChangeHandler(property) {
@@ -74,13 +67,13 @@ export default class Contact extends Component {
 
     // Check if the form is filled
     if(!errors || (Object.keys(errors).length === 0 && errors.constructor === Object)) {
-      this.handleOpenRFD();
+      this.handleRFD(true);
     }
     else {
       // Check if the form is correctly filled, might be improved later
       for(var label in errors) {
         if(errors[label] != '' || Object.keys(errors).length < 4) {
-          this.handleOpenRFD();
+          this.handleRFD(true);
           return;
         }
       }
@@ -95,11 +88,11 @@ export default class Contact extends Component {
       })
       .then( (response) => {
         this.setState({ snackBarMessage: response.data.msg, disableFields: false });
-        this.handleOpenMSS();
+        this.handleMSS(true);
       })
       .catch( (error) => {
         this.setState({ snackBarMessage: error.toString(), disableFields:false })
-        this.handleOpenMSS();
+        this.handleMSS(true);
         console.log(error);
       });
     }
@@ -110,9 +103,79 @@ export default class Contact extends Component {
       <FlatButton
         label="OK"
         primary={true}
-        onTouchTap={this.handleCloseRFD.bind(this)}
+        onTouchTap={() => {this.handleRFD(false)}}
       />
     ];
+
+    var msg = (
+      <div className="contact-msg">
+        <h4>Contact me !</h4>
+        <p>Please feel free to send a message if you have any questions you believe I could answer, or if you just want to say hello</p>
+      </div>
+    );
+
+    // Should be a component
+    var form = (
+      <div className="contact-form">
+          <div className="loading-container">
+            <CircularProgress
+              size={80}
+              style={{display: this.state.disableFields ? 'block' : 'none',
+                      position: 'relative',
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)'
+                    }}
+            />
+          </div>
+          <div className="name">
+            <TextField
+              floatingLabelText='First Name'
+              errorText={this.state.errorText.firstName}
+              onBlur={this.makeChangeHandler('firstName').bind(this)}
+              disabled={this.state.disableFields}
+              style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
+            />
+            <TextField
+              floatingLabelText='Last Name'
+              errorText={this.state.errorText.lastName}
+              onBlur={this.makeChangeHandler('lastName').bind(this)}
+              disabled={this.state.disableFields}
+              style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
+            />
+          </div>
+          <div className="mail-address">
+            <TextField
+              floatingLabelText='Email address'
+              errorText={this.state.errorText.email}
+              onBlur={this.makeChangeHandler('email').bind(this)}
+              fullWidth={true}
+              disabled={this.state.disableFields}
+              style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
+            />
+          </div>
+          <div className="message">
+            <TextField
+              floatingLabelText='Your message'
+              errorText={this.state.errorText.message}
+              onBlur={this.makeChangeHandler('message').bind(this)}
+              fullWidth={true}
+              multiLine={true}
+              rows={4}
+              className="tf"
+              disabled={this.state.disableFields}
+              style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
+            />
+          </div>
+          <FlatButton
+            label="Send message"
+            className="send-button"
+            secondary={false}
+            disabled={this.state.disableFields}
+            onClick={this.sendMessage.bind(this)}
+          />
+      </div>
+    )
 
     return (
       <div className="home-contact content">
@@ -128,73 +191,16 @@ export default class Contact extends Component {
           open={this.state.openMsgSentSnackbar}
           message={this.state.snackBarMessage}
           autoHideDuration={4000}
-          onRequestClose={this.handleCloseMSS.bind(this)}
+          onRequestClose={() => {this.handleMSS(false)}}
         />
         <div className="contact-elts">
-          <div className="contact-msg">
-            <h4>Contact me !</h4>
-            <p>Please feel free to contact me if you have any questions you believe I could answer, or if you just want to say hello</p>
-          </div>
-          <div className="contact-form">
-              <div className="loading-container">
-                <CircularProgress
-                  size={80}
-                  style={{display: this.state.disableFields ? 'block' : 'none',
-                          position: 'relative',
-                          left: '50%',
-                          top: '50%',
-                          transform: 'translate(-50%, -50%)'
-                        }}
-                />
-              </div>
-              <div className="name">
-                <TextField
-                  floatingLabelText='First Name'
-                  errorText={this.state.errorText.firstName}
-                  onBlur={this.makeChangeHandler('firstName').bind(this)}
-                  disabled={this.state.disableFields}
-                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
-                />
-                <TextField
-                  floatingLabelText='Last Name'
-                  errorText={this.state.errorText.lastName}
-                  onBlur={this.makeChangeHandler('lastName').bind(this)}
-                  disabled={this.state.disableFields}
-                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
-                />
-              </div>
-              <div className="mail-address">
-                <TextField
-                  floatingLabelText='Email address'
-                  errorText={this.state.errorText.email}
-                  onBlur={this.makeChangeHandler('email').bind(this)}
-                  fullWidth={true}
-                  disabled={this.state.disableFields}
-                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
-                />
-              </div>
-              <div className="message">
-                <TextField
-                  floatingLabelText='Your message'
-                  errorText={this.state.errorText.message}
-                  onBlur={this.makeChangeHandler('message').bind(this)}
-                  fullWidth={true}
-                  multiLine={true}
-                  rows={4}
-                  className="tf"
-                  disabled={this.state.disableFields}
-                  style={{filter: this.state.disableFields ? 'blur(3px)' : 'none'}}
-                />
-              </div>
-              <FlatButton
-                label="Send message"
-                className="send-button"
-                secondary={false}
-                disabled={this.state.disableFields}
-                onClick={this.sendMessage.bind(this)}
-              />
-          </div>
+
+
         </div>
+        <Duo className="contact-elts"
+          eltLeft={msg}
+          eltRight={form}
+        />
       </div>
     )
   }

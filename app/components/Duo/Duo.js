@@ -8,8 +8,9 @@ export default class Duo extends Component {
   }
 
   render() {
+    var className = `duo ${this.props.className || ''}`
     return (
-      <div className="duo" style={this.props.style}>
+      <div className={className} style={this.props.style}>
         <div className="duo__element duo__element--left">
           {this.props.eltLeft}
         </div>
