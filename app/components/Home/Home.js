@@ -37,12 +37,6 @@ const What = () => (
     </NavLink>
 )
 
-const Misc = () => (
-  <div className="home-misc content">
-    <p className="content-text">Thank god for these rap recordings <br/>I can ball like him on every verse and chorus</p>
-  </div>
-)
-
 
 
 export default class Home extends Component {
