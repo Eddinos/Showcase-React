@@ -1,11 +1,6 @@
 @import "../../../tools/fonts/Lato/latofonts.css";
 @import "../../../tools/fonts/Icomoon/style.css";
-
-.home-banner {
-  background-color: #373277;
-  background: linear-gradient(to bottom left, #373277 20%, #ff9226);
-  padding: 47vh 0 47vh 0;
-}
+@import "../../../theme/variables.scss";
 
 .container {
   color: white;
@@ -24,68 +19,86 @@
   margin: 0 auto;
 }
 
-// @media (max-device-width: 460px) {
-//   .content {
-//     padding: 5vh 0 5vh 0;
-//     margin: 0 auto;
-//   }
-// }
-
 body {
   margin: 0;
 }
 
-.home-who {
-  color: green;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  .profilePicture {
-    border-radius: 50%;
-    height: 400px;
-    width: auto;
-    img {
-      border-radius: inherit;
-      height: inherit;
-    }
+.home {
+  &-banner {
+    background: linear-gradient(to bottom left, $purple 20%, $orange);
+    padding: 47vh 0 47vh 0;
   }
-  .content-title {
-    font-family: 'Galada';
-    font-variant: normal;
-    transform: rotate(-15deg);
-    font-size: 4em;
-    margin: 0;
-  }
-  .content-text {
-    font-family: 'LatoWebSemiBold';
-  }
-  &__bio {
-    max-width: 50%;
-  }
-}
 
-
-
-.home-what {
-  background-color: #f2f2f2;
-  .elements {
-    margin: 0 10% 0 10%;
-    text-align: left;
+  &-who {
+    color: $green;
+    text-align: center;
     display: flex;
+    align-items: center;
     justify-content: space-around;
+    .profilePicture {
+      border-radius: 50%;
+      height: 400px;
+      width: auto;
+      img {
+        border-radius: inherit;
+        height: inherit;
+      }
+    }
+    .content-title {
+      font-family: 'Galada';
+      font-variant: normal;
+      transform: rotate(-15deg);
+      font-size: 4em;
+      margin: 0;
+    }
     .content-text {
-      max-width: 40%;
-      font-family: 'LatoWebSemibold';
-      font-size: 3em;
-      font-variant: small-caps;
-      p {
-        font-size: 50%;
+      font-family: 'LatoWebSemiBold';
+      font-size: 2em;
+    }
+
+    @media (max-device-width: 480px) {
+      padding: 10vh 0;
+      &__bio {
+        padding-top: 10vh;
       }
     }
   }
-}
 
-.home-contact {
-  // background-color: #f2f2f2;
+  &-what {
+    background-color: #f2f2f2;
+    .content-text {
+      margin-bottom: 12%;
+      h4 {
+        margin: 0;
+      }
+      p, .moreButton {
+        font-size: 75%;
+      }
+      .moreButton {
+        border: solid 2px black;
+        margin: 0 auto;
+        padding: 15px 8px;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        &:hover {
+          filter: invert(100%);
+          background-color: $second;
+        }
+      }
+    }
+
+    @media (max-device-width: 480px) {
+      padding: 15vh 0;
+      .content-text {
+        p, .moreButton {
+          font-size: 100%;
+        }
+      }
+    }
+  }
+
+  &-contact {
+
+  }
 }
