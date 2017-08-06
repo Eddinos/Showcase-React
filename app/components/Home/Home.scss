@@ -54,12 +54,19 @@ body {
     .content-text {
       font-family: 'LatoWebSemiBold';
       font-size: 2em;
+      margin-top: 10%;
+    }
+    &__bio {
+      max-width: 600px;
     }
 
     @media (max-device-width: 480px) {
       padding: 10vh 0;
       &__bio {
         padding-top: 10vh;
+        .content-text {
+          font-size: 3em;
+        }
       }
     }
   }
