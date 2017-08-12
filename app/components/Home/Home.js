@@ -5,6 +5,9 @@ import { Link } from 'react-router';
 import AppBar from '../AppBar/AppBar';
 import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
+import lyon from '../../../tools/images/lyon_desktop.png';
+import shanghai from '../../../tools/images/shanghai_desktop.jpg';
+import paris from '../../../tools/images/paris_desktop.jpg';
 import cv from '../../../tools/cv.pdf';
 import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
@@ -71,13 +74,31 @@ const What = (props) => {
   )
 }
 
-
+var hometowns = [
+  {
+    name: 'Lyon',
+    src: lyon,
+    opacity: 1
+  },
+  {
+    name: 'SH',
+    src: shanghai,
+    opacity: 0
+  },
+  {
+    name: 'Paname',
+    src: paris,
+    opacity: 0
+  }
+]
 
 export default class Home extends Component {
 
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      hometowns: hometowns
+    };
   }
 
   componentDidMount () {
@@ -89,6 +110,30 @@ export default class Home extends Component {
     .catch((error) => {
       console.log(error.message);
     })
+
+    this.changeHometown();
+  }
+
+  changeHometown () {
+    setInterval(() => {
+      this.setState((state, props) => {
+        state.hometowns.some((town, key) => {
+          if (town.opacity == 1) {
+            town.opacity = 0;
+            state.hometowns[(key+1)%state.hometowns.length].opacity = 1;
+            return true;
+          }
+        })
+      })
+    }, 20000);
+
+  }
+
+  createHometowns () {
+
+    return this.state.hometowns.map((item, key) => {
+      return <img src={item.src} alt={item.name} className="home-city" style={{opacity: item.opacity}}/>
+    })
   }
 
   render () {
@@ -96,6 +141,7 @@ export default class Home extends Component {
       <div>
         <div className="home-banner container">
           <div className="title">Welcome to my sh*t</div>
+          {this.createHometowns()}
         </div>
         <Who />
 

@@ -73,6 +73,7 @@ export default class AppBar extends Component {
     this.setState((state, props) => {
       state.burgerStyle.display = show ? 'none' : 'block';
       state.closeStyle.display = show ? 'block' : 'none';
+      // I should improve this badly
       document.querySelector('.mobile-menu').style.display = show ? 'block' : 'none'
     })
   }

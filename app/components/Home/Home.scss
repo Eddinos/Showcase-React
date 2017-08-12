@@ -12,6 +12,12 @@
   font-variant: small-caps;
   font-family: 'LatoWebSemibold';
   font-size: 3em;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 9;
 }
 
 .content {
@@ -26,7 +32,20 @@ body {
 .home {
   &-banner {
     background: linear-gradient(to bottom left, $purple 20%, $orange);
-    padding: 47vh 0 47vh 0;
+    height: 100vh;
+  }
+
+  &-city {
+    opacity: 0;
+    &.is-active {
+      opacity: 1;
+    }
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s linear;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   &-who {
