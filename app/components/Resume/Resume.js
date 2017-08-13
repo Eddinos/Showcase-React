@@ -145,7 +145,7 @@ export default class Resume extends Component {
     return (
       <div className="resume">
         <div className="banner home-banner">
-          <h1 className="container title">
+          <h1 className="container centered title">
             Ma resume
           </h1>
         </div>

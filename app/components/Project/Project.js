@@ -4,6 +4,7 @@ import Progress from '../Progress/Progress';
 import List from '../List/List';
 import Reference from '../Reference/Reference';
 import { Link } from 'react-router';
+import {findDOMNode} from 'react-dom';
 import './Project.scss'
 
 export default class Project extends Component {
@@ -21,6 +22,21 @@ export default class Project extends Component {
       currentProject: newProject,
       errorProject: errorProject
     }
+  }
+
+  componentDidMount () {
+    this.getHere();
+  }
+
+  getHere () {
+    var project = findDOMNode(this);
+    var scrollInterval = setInterval(() => {
+      window.scrollTo(0, window.scrollY+20);
+      if(project.getBoundingClientRect().bottom - window.innerHeight <= 0)
+      {
+        clearInterval(scrollInterval)
+      }
+    }, 1)
   }
 
   componentWillReceiveProps (nextProps) {

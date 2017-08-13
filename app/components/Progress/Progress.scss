@@ -1,3 +1,5 @@
+@import "../../../theme/variables.scss";
+
 .progress_bar {
   width:400px;
   height:30px;
@@ -17,7 +19,7 @@
 	   -webkit-linear-gradient(top,
 	                           rgba(255, 255, 255, .25),
 	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left, #09c, #f44);
+	   -webkit-linear-gradient(left, $purple, $orange);
 
     border-radius: 2px;
     background-size: 35px 20px, 100% 100%, 100% 100%;

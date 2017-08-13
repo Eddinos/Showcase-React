@@ -12,12 +12,6 @@
   font-variant: small-caps;
   font-family: 'LatoWebSemibold';
   font-size: 3em;
-  position: absolute;
-  top: 33%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  z-index: 9;
 }
 
 .content {
@@ -33,6 +27,15 @@ body {
   &-banner {
     background: linear-gradient(to bottom left, $purple 20%, $orange);
     height: 100vh;
+  }
+
+  &-title {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 9;
   }
 
   &-city {

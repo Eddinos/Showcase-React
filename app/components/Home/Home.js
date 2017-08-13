@@ -6,8 +6,12 @@ import AppBar from '../AppBar/AppBar';
 import { images } from '../../../config';
 import pp from '../../../tools/images/Dino-sir.jpg';
 import lyon from '../../../tools/images/lyon_desktop.png';
+import lyonMobile from '../../../tools/images/lyon_mobile.png';
 import shanghai from '../../../tools/images/shanghai_desktop.jpg';
+import shanghaiWide from '../../../tools/images/shanghai_wide.jpg';
+import shanghaiMobile from '../../../tools/images/shanghai_mobile.jpg';
 import paris from '../../../tools/images/paris_desktop.jpg';
+import parisMobile from '../../../tools/images/paris_mobile.jpg';
 import cv from '../../../tools/cv.pdf';
 import Map from '../Map/Map';
 import Contact from '../Contact/Contact';
@@ -78,16 +82,22 @@ var hometowns = [
   {
     name: 'Lyon',
     src: lyon,
+    srcsetXL: lyon,
+    srcsetMobile: lyonMobile,
     opacity: 1
   },
   {
     name: 'SH',
     src: shanghai,
+    srcsetXL: shanghaiWide,
+    srcsetMobile: shanghaiMobile,
     opacity: 0
   },
   {
     name: 'Paname',
     src: paris,
+    srcsetXL: paris,
+    srcsetMobile: parisMobile,
     opacity: 0
   }
 ]
@@ -125,14 +135,15 @@ export default class Home extends Component {
           }
         })
       })
-    }, 20000);
+    }, 5000);
 
   }
 
   createHometowns () {
 
     return this.state.hometowns.map((item, key) => {
-      return <img src={item.src} alt={item.name} className="home-city" style={{opacity: item.opacity}}/>
+      let srcset = `${item.srcsetXL} 1800w, ${item.srcsetMobile} 360w`
+      return <img src={item.src} alt={item.name} className="home-city" srcSet={srcset} sizes="100vw" style={{opacity: item.opacity}}/>
     })
   }
 
@@ -140,7 +151,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className="home-banner container">
-          <div className="title">Welcome to my sh*t</div>
+          <div className="title home-title">Welcome to my sh*t</div>
           {this.createHometowns()}
         </div>
         <Who />
