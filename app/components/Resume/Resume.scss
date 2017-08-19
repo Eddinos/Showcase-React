@@ -3,9 +3,6 @@
 .resume {
   overflow: hidden;
   .banner {
-    background: url('../../../tools/images/venice_desktop.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
     @media (min-device-width: 1800px) {
       background-position-y: -120px;
     }

@@ -20,6 +20,7 @@ import NavLink from '../NavLink/NavLink';
 import Duo from '../Duo/Duo';
 import axios from 'axios';
 import config from "../../../config";
+import Banner from '../Banner/Banner';
 
 
 const Who = () => {
@@ -148,19 +149,17 @@ export default class Home extends Component {
   }
 
   render () {
+    var bannerImg = `url(${lyonMobile})`;
     return (
       <div>
-        <div className="home-banner container">
-          <div className="title home-title">Welcome to my sh*t</div>
-          {/* <!--{this.createHometowns()}--> */}
-        </div>
+        <Banner title="Welcome to my sh*t" backgroundImg={bannerImg} />
+
         <Who />
 
         <What currentProject={this.state.currentProject}/>
 
         <Contact />
 
-        {/* <Map /> */}
       </div>
     );
   }

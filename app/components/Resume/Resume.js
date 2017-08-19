@@ -5,10 +5,12 @@ import cvPDF from '../../../tools/cv.pdf'
 import Slider from '../Slider/Slider';
 import Skills from '../Skills/Skills';
 import Duo from '../Duo/Duo';
+import Banner from '../Banner/Banner';
 import Experience from '../Experience/Experience';
 import ARTLogicsLogo from '../../../tools/images/ARTLogics.png';
 import SopraSteriaLogo from '../../../tools/images/sopra.jpeg';
 import OmnilogLogo from '../../../tools/images/logo-omnilog.png';
+import bannerImg from '../../../tools/images/venice_desktop.jpg'
 
 //TODO fetch it from server
 const skills = {
@@ -144,11 +146,7 @@ export default class Resume extends Component {
   render () {
     return (
       <div className="resume">
-        <div className="banner home-banner">
-          <h1 className="container centered title">
-            Ma resume
-          </h1>
-        </div>
+        <Banner title="My resume" backgroundImg={`url(${bannerImg})`} />
         <Duo eltLeft={<PdfText />} eltRight={<PdfLink />} style={pdfStyle}/>
         {this.createSkillsComponents()}
         <h1 className="content-text mid-title mid-title--blue">Work Experiences</h1>
