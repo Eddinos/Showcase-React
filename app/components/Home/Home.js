@@ -135,7 +135,7 @@ export default class Home extends Component {
           }
         })
       })
-    }, 5000);
+    }, 20000);
 
   }
 
@@ -152,7 +152,7 @@ export default class Home extends Component {
       <div>
         <div className="home-banner container">
           <div className="title home-title">Welcome to my sh*t</div>
-          {this.createHometowns()}
+          {/* <!--{this.createHometowns()}--> */}
         </div>
         <Who />
 

@@ -25,13 +25,14 @@ body {
 
 .home {
   &-banner {
-    background: linear-gradient(to bottom left, $purple 20%, $orange);
+    background: $purple;
+    // background: linear-gradient(to bottom left, $purple 20%, $orange);
     height: 100vh;
   }
 
   &-title {
     position: absolute;
-    top: 33%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
