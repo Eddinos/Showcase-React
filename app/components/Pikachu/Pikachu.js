@@ -5,7 +5,7 @@ import './Pikachu.scss';
 export default class Pikachu extends Component {
   render() {
     return (
-      <img className="pika-img" src="http://exruefrontenac.com/images6/pikachu-57.png" alt="pikapika"/>
+      <img className="pika-img" src="https://i.ytimg.com/vi/gENjTs8VskQ/maxresdefault.jpg" alt="pikapika"/>
     )
   }
 }
