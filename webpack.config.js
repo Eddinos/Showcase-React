@@ -40,8 +40,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|pdf|jpeg)$/,
-        loader: 'url-loader?limit=100000'
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|pdf|jpeg|ico)$/,
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },
@@ -74,7 +74,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin()
-    //HTMLWebpackPluginConfig
+    new webpack.optimize.UglifyJsPlugin(),
+    HTMLWebpackPluginConfig
   ]
 };

@@ -146,7 +146,7 @@ export default class Resume extends Component {
   render () {
     return (
       <div className="resume">
-        <Banner title="My resume" backgroundImg={`url(${bannerImg})`} />
+        <Banner title="My resume" backgroundImage={`url(${bannerImg})`} />
         <Duo eltLeft={<PdfText />} eltRight={<PdfLink />} style={pdfStyle}/>
         {this.createSkillsComponents()}
         <h1 className="content-text mid-title mid-title--blue">Work Experiences</h1>

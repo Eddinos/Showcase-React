@@ -108,7 +108,7 @@ export default class Home extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      hometowns: hometowns
+      hometown: hometowns[Math.floor(Math.random()*3)]
     };
   }
 
@@ -121,38 +121,26 @@ export default class Home extends Component {
     .catch((error) => {
       console.log(error.message);
     })
-
-    this.changeHometown();
   }
 
-  changeHometown () {
-    setInterval(() => {
-      this.setState((state, props) => {
-        state.hometowns.some((town, key) => {
-          if (town.opacity == 1) {
-            town.opacity = 0;
-            state.hometowns[(key+1)%state.hometowns.length].opacity = 1;
-            return true;
-          }
-        })
-      })
-    }, 20000);
-
-  }
-
-  createHometowns () {
-
-    return this.state.hometowns.map((item, key) => {
-      let srcset = `${item.srcsetXL} 1800w, ${item.srcsetMobile} 360w`
-      return <img src={item.src} alt={item.name} className="home-city" srcSet={srcset} sizes="100vw" style={{opacity: item.opacity}}/>
-    })
+  setCurrentHometown () {
+    if (!this.state.hometown) {
+      return '';
+    }
+    if (screen.width < 480) {
+      return this.state.hometown.srcsetMobile;
+    }
+    else if (screen.width < 1440) {
+      return this.state.hometown.src;
+    }
+    return this.state.hometown.srcsetXL;
   }
 
   render () {
-    var bannerImg = `url(${lyonMobile})`;
+    var bgImg = this.setCurrentHometown();
     return (
-      <div>
-        <Banner title="Welcome to my sh*t" backgroundImg={bannerImg} />
+      <div className="home">
+        <Banner title="Welcome to my sh*t" backgroundImage={`url(${bgImg})`} />
 
         <Who />
 

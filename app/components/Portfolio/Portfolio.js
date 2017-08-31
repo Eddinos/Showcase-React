@@ -87,7 +87,7 @@ export default class Portfolio extends Component {
       <div className="portfolio">
         <Banner
           title="My projects"
-          backgroundImg={`url(${titlePic})`}
+          backgroundImage={`url(${titlePic})`}
         />
 
         <Intro/>

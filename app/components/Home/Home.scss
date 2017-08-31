@@ -29,6 +29,11 @@ body {
     // background: linear-gradient(to bottom left, $purple 20%, $orange);
     height: 100vh;
   }
+  .banner {
+    @media (max-device-width: 640px) {
+      background-position-x: 50%;
+    }
+  }
 
   &-title {
     position: absolute;
@@ -111,6 +116,7 @@ body {
         cursor: pointer;
         text-decoration: none;
         color: black;
+        transition: background-color .25s linear;
         &:hover {
           filter: invert(100%);
           background-color: $second;

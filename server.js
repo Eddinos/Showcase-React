@@ -9,18 +9,6 @@ import routes from './app/routes';
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
-// using webpack-dev-server and middleware in development environment
-// if(process.env.NODE_ENV !== 'production') {
-//   var webpackDevMiddleware = require('webpack-dev-middleware');
-//   var webpackHotMiddleware = require('webpack-hot-middleware');
-//   var webpack = require('webpack');
-//   var config = require('./webpack.config');
-//   var compiler = webpack(config);
-//
-//   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-//   app.use(webpackHotMiddleware(compiler));
-// }
-
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('*', function (req, res) {
@@ -53,7 +41,7 @@ function render404 () {
     <head>
       <meta charset="utf-8">
       <title>Eddine shows off</title>
-      <link rel="icon" type="img/ico" href="tools\images\ed.ico">
+      <link rel="icon" type="img/ico" href="\ed.ico">
       <style>
         .msg404 {
           position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 5em;font-family: 'Century Gothic'
@@ -79,12 +67,11 @@ function renderPage(appHtml) {
     <head>
       <meta charset="utf-8">
       <title>Eddine shows off</title>
-      <link rel="icon" type="img/ico" href="/tools/images/ed.ico">
+      <link rel="icon" type="img/ico" href="/ed.ico">
       <link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     </head>
     <body>
       <div id='root'/>
-      <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByH0c5bxYDZ48BLQ401BBsm4DppG6QNkQ"></script> -->
       <script src="/bundle.js"></script>
 
     </script>
