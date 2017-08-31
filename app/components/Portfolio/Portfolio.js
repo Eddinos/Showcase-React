@@ -5,6 +5,7 @@ import './Portfolio.scss';
 import Card from '../Card/Card';
 import NavLink from '../NavLink/NavLink';
 import Presenter from '../Presenter/Presenter';
+import Banner from '../Banner/Banner';
 import DataContainer from '../DataContainer/DataContainer';
 import axios from 'axios';
 import { Link } from 'react-router';
@@ -22,7 +23,8 @@ export default class Portfolio extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      proyectos: []
+      proyectos: [],
+      projects: []
     }
   }
 
@@ -47,40 +49,10 @@ export default class Portfolio extends Component {
    this.setState({proyectos: loadedProjects});
   }
 
-  render () {
-    if (!this.state.projects) {
-      return (
-        <div className="portfolio">
-          <figure className="portfolio-header">
-            <img src={titlePic} alt="portfolio header" className="header-img"/>
-            <figcaption className="header-caption">
-              <h1 className="title">
-                My projects
-              </h1>
-            </figcaption>
-          </figure>
-
-          <Intro/>
-        </div>
-      )
-    }
+  renderProjects () {
     let page = this.props.location.pathname;
     return (
-      <div className="portfolio">
-        <figure className="portfolio-header">
-          <img src={titlePic} alt="portfolio header" className="header-img"/>
-          <figcaption className="header-caption">
-            <h1 className="title">
-              My projects
-            </h1>
-          </figcaption>
-        </figure>
-
-        <Intro/>
-
-        {/* Too bad but I can't think of a better solution right now
-          <DataContainer url="http://numbersapi.com/random/trivia"> */}
-
+      <div>
         <Presenter>
           {this.state.projects.map((item, key) => {
               return (
@@ -93,17 +65,6 @@ export default class Portfolio extends Component {
                 </Link>
               )
             })}
-          {this.state.proyectos.map((item, key) => {
-            return (
-              <NavLink to="/pikachu" key={key}>
-                <Card
-                  source={item.source}
-                  title={item.title}
-                  description={item.description}
-                />
-              </NavLink>
-            )
-          })}
         </Presenter>
 
         {this.props.children &&
@@ -117,9 +78,21 @@ export default class Portfolio extends Component {
             </ReactCSSTransitionGroup>
           </div>
         }
+      </div>
+    )
+  }
 
+  render () {
+    return (
+      <div className="portfolio">
+        <Banner
+          title="My projects"
+          backgroundImage={`url(${titlePic})`}
+        />
 
-        {/* </DataContainer> */}
+        <Intro/>
+
+        {this.renderProjects()}
       </div>
     )
   }

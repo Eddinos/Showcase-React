@@ -1,15 +1,10 @@
-.portfolio-header {
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  font-family: 'LatoWebSemiBold';
-  width: 100%;
-  height: 99%;
-  .header-img {
+.portfolio {
+  .banner {
     filter: grayscale(1);
-    width: 100%;
-    // height: 100vh;
-    max-width: 100%;
+    background-size: cover;
+    @media (max-device-width: 640px) {
+      background-position-x: 58%;
+    }
   }
 }
 

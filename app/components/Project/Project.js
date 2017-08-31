@@ -41,10 +41,13 @@ export default class Project extends Component {
 
   componentWillReceiveProps (nextProps) {
     let newProject = nextProps.projects[nextProps.params.projectID-1];
-    // this.setState({
-    //   projectID: nextProps.params.projectID,
-    //   currentProject: newProject
-    // });
+    if (newProject) {
+      this.setState({errorProject: false})
+    }
+    this.setState({
+      projectID: nextProps.params.projectID,
+      currentProject: newProject
+    });
   }
 
   getNavID (direction) {
