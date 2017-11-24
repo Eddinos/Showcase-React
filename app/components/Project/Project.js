@@ -5,6 +5,7 @@ import List from '../List/List';
 import Reference from '../Reference/Reference';
 import { Link } from 'react-router';
 import {findDOMNode} from 'react-dom';
+import Text from '../Text/Text';
 import './Project.scss'
 
 export default class Project extends Component {
@@ -85,7 +86,7 @@ export default class Project extends Component {
         ) :
         (<div>
             <h1 className="title">{this.state.currentProject.title}</h1>
-            <h4 className="description">{this.state.currentProject.longDescription}</h4>
+            <div className="description"><Text>{this.state.currentProject.longDescription}</Text></div>
             <Progress percentageValue={this.state.currentProject.completion}/>
 
             <List technos={this.state.currentProject.technos} />
