@@ -5,12 +5,12 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
-import config from "../../../config";
+import config from "../../../../config";
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 import CircularProgress from 'material-ui/CircularProgress';
-import Duo from '../Duo/Duo';
+import Duo from '../../bonds/Duo/Duo';
 import './Contact.scss';
 
 export default class Contact extends Component {

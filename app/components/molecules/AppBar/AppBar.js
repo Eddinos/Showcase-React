@@ -2,13 +2,13 @@ import React from 'react';
 import { Component } from 'react';
 import { IndexLink } from 'react-router'
 import s from './AppBar.scss';
-import NavLink from '../NavLink/NavLink'
+import NavLink from '../../atoms/NavLink/NavLink'
 import IconButton from 'material-ui/IconButton';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ViewHeadLine from 'material-ui/svg-icons/action/view-headline';
 import Clear from 'material-ui/svg-icons/content/clear';
-import logo from '../../../tools/images/ed.png';
+import logo from '../../../../tools/images/ed.png';
 
 
 

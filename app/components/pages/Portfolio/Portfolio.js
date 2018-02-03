@@ -1,16 +1,16 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
-import titlePic from '../../../tools/images/adaptedBasketball.jpg';
+import titlePic from '../../../../tools/images/adaptedBasketball.jpg';
 import './Portfolio.scss';
-import Card from '../Card/Card';
-import NavLink from '../NavLink/NavLink';
-import Presenter from '../Presenter/Presenter';
-import Banner from '../Banner/Banner';
-import DataContainer from '../DataContainer/DataContainer';
+import Card from '../../atoms/Card/Card';
+import NavLink from '../../atoms/NavLink/NavLink';
+import Presenter from '../../organisms/Presenter/Presenter';
+import Banner from '../../atoms/Banner/Banner';
+import DataContainer from '../../bonds/DataContainer/DataContainer';
 import axios from 'axios';
 import { Link } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import config from "../../../config";
+import config from "../../../../config";
 
 const Intro = () => (
   <div className="intro content-text">

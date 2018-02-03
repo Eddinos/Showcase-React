@@ -1,9 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 import './App.scss';
-import Layout from '../Layout/Layout';
-import Home from '../Home/Home';
-import bannerImg from '../../../tools/images/ed.ico' 
+import Layout from '../bonds/Layout/Layout';
+import Home from '../pages/Home/Home';
 
 export default class App extends Component {
   render () {

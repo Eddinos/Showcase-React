@@ -1,11 +1,11 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
-import Progress from '../Progress/Progress';
-import List from '../List/List';
-import Reference from '../Reference/Reference';
+import Progress from '../../atoms/Progress/Progress';
+import List from '../../atoms/List/List';
+import Reference from '../../atoms/Reference/Reference';
 import { Link } from 'react-router';
 import {findDOMNode} from 'react-dom';
-import Text from '../Text/Text';
+import Text from '../../atoms/Text/Text';
 import './Project.scss'
 
 export default class Project extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import './Experience.scss';
-import Text from '../Text/Text';
+import Text from '../../atoms/Text/Text';
 
 export default class Experience extends Component {
   constructor(props) {

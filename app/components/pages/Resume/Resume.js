@@ -1,16 +1,16 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import './Resume.scss';
-import cvPDF from '../../../tools/cv.pdf'
-import Slider from '../Slider/Slider';
-import Skills from '../Skills/Skills';
-import Duo from '../Duo/Duo';
-import Banner from '../Banner/Banner';
-import Experience from '../Experience/Experience';
-import ARTLogicsLogo from '../../../tools/images/ARTLogics.png';
-import SopraSteriaLogo from '../../../tools/images/sopra.jpeg';
-import OmnilogLogo from '../../../tools/images/logo-omnilog.png';
-import bannerImg from '../../../tools/images/venice_desktop.jpg'
+import cvPDF from '../../../../tools/cv.pdf'
+import Slider from '../../bonds/Slider/Slider';
+import Skills from '../../organisms/Skills/Skills';
+import Duo from '../../bonds/Duo/Duo';
+import Banner from '../../atoms/Banner/Banner';
+import Experience from '../../molecules/Experience/Experience';
+import ARTLogicsLogo from '../../../../tools/images/ARTLogics.png';
+import SopraSteriaLogo from '../../../../tools/images/sopra.jpeg';
+import OmnilogLogo from '../../../../tools/images/logo-omnilog.png';
+import bannerImg from '../../../../tools/images/venice_desktop.jpg'
 
 //TODO fetch it from server
 const skills = {
