@@ -20,7 +20,8 @@ import Duo from '../../bonds/Duo/Duo';
 import axios from 'axios';
 import config from "../../../../config";
 import Banner from '../../atoms/Banner/Banner';
-
+import { connect } from 'react-redux';
+import { changeColor } from '../../../actions'
 
 const Who = () => {
   const picture = (<a href="/resume" className="profilePicture">
@@ -102,7 +103,7 @@ var hometowns = [
   }
 ]
 
-export default class Home extends Component {
+class HomePage extends Component {
 
   constructor (props) {
     super(props);
@@ -140,6 +141,14 @@ export default class Home extends Component {
     return (
       <div className="home">
         <Banner title="Welcome to my sh*t" backgroundImage={`url(${bgImg})`} />
+        <div onClick={this.props.onColorClick} style={{color: this.props.customColor}}>REDUX</div>
+        <select value={this.props.customColor} onChange={this.props.onColorClick}>
+          <option value="red">RED</option>
+          <option value="blue">BLUE</option>
+          <option value="green">GREEN</option>
+          <option value="darksalmon">SALMON</option>
+          <option value="darkmagenta">DEEP PURPLE</option>
+        </select>
 
         <Who />
 
@@ -151,3 +160,25 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    customColor: state.color
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onColorClick (e) {
+      let color = e ? e.target.value : 'red'
+      dispatch(changeColor(color))
+    }
+  }
+}
+
+const Home = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage)
+
+export default Home

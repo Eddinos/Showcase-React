@@ -10,7 +10,9 @@ import DataContainer from '../../bonds/DataContainer/DataContainer';
 import axios from 'axios';
 import { Link } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import config from "../../../../config";
+import { getProjects } from '../../../api'
+import { connect } from 'react-redux';
+
 
 const Intro = () => (
   <div className="intro content-text">
@@ -19,7 +21,7 @@ const Intro = () => (
   </div>
 )
 
-export default class Portfolio extends Component {
+export class PortfolioPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,33 +30,12 @@ export default class Portfolio extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get(config.projectsAPI)
-    .then((response) => {
-      this.setState({projects: response.data.projects})
-    })
-    .catch((error) => {
-      console.log(error.message);
-    })
-
-   // initialization of projects displayed in presenter
-   var loadedProjects = [];
-   loadedProjects.push(
-   {
-     source: "http://www.basketusa.com/wp-content/uploads/2017/03/kobe-shaq.jpg",
-     title: 'Kobe & Shaq',
-     description: "They're here for testing purpose only ! Don't click !"
-   }
- );
-   this.setState({proyectos: loadedProjects});
-  }
-
   renderProjects () {
     let page = this.props.location.pathname;
     return (
       <div>
         <Presenter>
-          {this.state.projects.map((item, key) => {
+          {this.props.projects.map((item, key) => {
               return (
                 <Link to={"/portfolio/project/" + item.id + "#project"} key={key}>
                   <Card
@@ -74,7 +55,7 @@ export default class Portfolio extends Component {
               transitionEnterTimeout={900}
               transitionLeaveTimeout={900}
             >
-                {React.cloneElement(React.Children.only(this.props.children), {key: page, projects: this.state.projects })}
+                {React.cloneElement(React.Children.only(this.props.children), {key: page, projects: this.props.projects })}
             </ReactCSSTransitionGroup>
           </div>
         }
@@ -83,6 +64,7 @@ export default class Portfolio extends Component {
   }
 
   render () {
+    console.log('Portfolio state', this.props);
     return (
       <div className="portfolio">
         <Banner
@@ -97,3 +79,15 @@ export default class Portfolio extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    projects: state.projects
+  }
+}
+
+const Portfolio = connect(
+  mapStateToProps,
+)(PortfolioPage)
+
+export default Portfolio
