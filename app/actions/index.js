@@ -7,12 +7,13 @@ export const changeColor = (color) => {
   }
 }
 
-const receiveProjects = projects => ({
+export const receiveProjects = projects => ({
   type: 'RECEIVE_PROJECTS',
   projects
 })
 
 export const getAllProjects = () => dispatch => {
+  console.log('moi par contre je peux aller me faire foutre');
   getProjects().then((data) => {
     dispatch(receiveProjects(data.projects))
   })

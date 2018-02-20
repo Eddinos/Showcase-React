@@ -7,12 +7,17 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { getProjects } from './reducers'
-import { getAllProjects } from './actions'
+import reducers from './reducers'
+import { getProjects, setColor } from './reducers'
+import { getAllProjects, receiveProjects } from './actions'
 injectTapEventPlugin();
 
 const middleware = [ thunk ];
-let store = createStore(getProjects, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(...middleware))
+let store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(...middleware)
+)
 
 store.dispatch(getAllProjects())
 
