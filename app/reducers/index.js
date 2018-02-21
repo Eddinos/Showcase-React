@@ -1,14 +1,23 @@
 import { combineReducers } from 'redux'
+import projects, * as fromProjects from './projects'
+import skills from './skills'
+import experiences from './experiences'
 
 const initialState = {
   projects: [],
-  color: 'black'
+  color: 'black',
+  skills: [],
+  experiences: []
 }
 
 export default combineReducers({
   color,
   projects,
+  skills,
+  experiences
 })
+
+const getSingleProject = (state, id) => fromProjects.getSingleProject(state.cart, id)
 
 function color (state = 'black', action) {
   switch (action.type) {
@@ -19,14 +28,7 @@ function color (state = 'black', action) {
   }
 }
 
-function projects (state = [], action) {
-  switch (action.type) {
-    case 'RECEIVE_PROJECTS':
-      return getProjects(state, action)
-    default:
-      return state
-  }
-}
+
 
 
 export function setColor (state = 'black', action) {
@@ -36,15 +38,5 @@ export function setColor (state = 'black', action) {
     default:
       return state
 
-  }
-}
-
-
-export const getProjects = (state = [], action) => {
-  switch (action.type) {
-    case 'RECEIVE_PROJECTS':
-        return action.projects
-    default:
-      return state
   }
 }

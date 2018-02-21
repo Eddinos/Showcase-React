@@ -21,7 +21,7 @@ import axios from 'axios';
 import config from "../../../../config";
 import Banner from '../../atoms/Banner/Banner';
 import { connect } from 'react-redux';
-import { changeColor } from '../../../actions'
+import { changeColor, getProject, selectProject } from '../../../actions'
 
 const Who = () => {
   const picture = (<a href="/resume" className="profilePicture">
@@ -113,6 +113,7 @@ class HomePage extends Component {
   }
 
   componentDidMount () {
+    this.props.getRandomProject();
     let currentProjectAPI = `${config.projectsAPI}?id=${currentProjectID}`;
     axios.get(currentProjectAPI)
     .then((response) => {
@@ -172,6 +173,10 @@ const mapDispatchToProps = (dispatch) => {
     onColorClick (e) {
       let color = e ? e.target.value : 'red'
       dispatch(changeColor(color))
+    },
+    getRandomProject () {
+      let id = Math.floor(Math.random()*4)
+      dispatch(selectProject(id))
     }
   }
 }

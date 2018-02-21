@@ -1,4 +1,4 @@
-import { getProjects } from '../api'
+import { getProjects, getSkills, getXp, getSingleProject } from '../api'
 
 export const changeColor = (color) => {
   return {
@@ -12,9 +12,51 @@ export const receiveProjects = projects => ({
   projects
 })
 
+export const receiveSkills = skills => ({
+  type: 'RECEIVE_SKILLS',
+  skills
+})
+
+export const receiveExperiences = experiences => ({
+  type: 'RECEIVE_XP',
+  experiences
+})
+
+export const receiveProject = project => ({
+  type: 'RECEIVE_PROJECT',
+  project
+})
+
+export const selectSingleProject = (id, projects) => ({
+  type: 'SELECT_SINGLE_PROJECT',
+  id,
+  projects
+})
+
 export const getAllProjects = () => dispatch => {
-  console.log('moi par contre je peux aller me faire foutre');
   getProjects().then((data) => {
     dispatch(receiveProjects(data.projects))
   })
+}
+
+export const getAllSkills = () => dispatch => {
+  getSkills().then(data => {
+    dispatch(receiveSkills(data))
+  })
+}
+
+export const getAllExperiences = () => dispatch => {
+  getXp().then(data => {
+    dispatch(receiveExperiences(data))
+  })
+}
+
+export const getProject = (id) => dispatch => {
+  getSingleProject(id).then(data => {
+    dispatch(receiveProject(data))
+  })
+}
+
+export const selectProject = (id) => (dispatch, getState) => {
+  dispatch(selectSingleProject(id, getState().projects))
 }

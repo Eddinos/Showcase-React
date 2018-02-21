@@ -13,6 +13,14 @@ export const getProjects = () => {
     .catch(error => errorHandler(error))
 }
 
+export const getSingleProject = (id) => {
+  return axios.get(`${projectsEndPoint}?id=${id}`)
+    .then(response => {
+      return response.data
+    })
+    .catch(error => errorHandler(error))
+}
+
 export const getSkills = () => {
   return axios.get(skillsEndPoint)
     .then(response => {

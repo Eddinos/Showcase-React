@@ -9,6 +9,8 @@ import Banner from '../../atoms/Banner/Banner';
 import Experience from '../../molecules/Experience/Experience';
 import bannerImg from '../../../../tools/images/venice_desktop.jpg';
 import { getXp, getSkills } from '../../../api'
+import { getAllSkills, getAllExperiences } from '../../../actions'
+import { connect } from 'react-redux';
 
 
 const PdfLink = (props) => {
@@ -31,10 +33,10 @@ const PdfText = (props) => {
 }
 const pdfStyle = {background: '#f9f9f9', padding: '15vh 0'};
 
-export default class Resume extends Component {
+export class ResumePage extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       skills: {},
       experiences: []
@@ -43,20 +45,23 @@ export default class Resume extends Component {
 
   componentDidMount() {
     let newState = {}
-    let skillsP = getSkills().then(data => {
-      newState.skills = data;
-    })
+    this.props.getSkills();
+    this.props.getExperiences();
+    console.log(this.props);
+    // let skillsP = getSkills().then(data => {
+    //   newState.skills = data;
+    // })
     let xpP = getXp().then(data => {
       newState.experiences = data;
     })
-    Promise.all([skillsP, xpP]).then(() => {
+    Promise.all([ xpP]).then(() => {
       this.setState(newState)
     })
   }
 
   createSkillsComponents() {
     let skillsComponents = [];
-    let skills = this.state.skills;
+    let skills = this.props.skills;
     for (var type in skills) {
       if (skills.hasOwnProperty(type)) {
         skillsComponents.push(
@@ -70,7 +75,10 @@ export default class Resume extends Component {
   }
 
   createXpComponents() {
-    return this.state.experiences.map((item, key) => {
+    if (!this.props.experiences) {
+      return []
+    }
+    return this.props.experiences.map((item, key) => {
       let logoCmpnt = <img className="xpLogo" src={item.logo} alt=""/>;
       let description = <Experience data={item} key={key}> banana </Experience>//<div className="content-text">{item.title}</div>;
       var eltLeft = key%2 === 0 ? logoCmpnt : description ;
@@ -87,7 +95,6 @@ export default class Resume extends Component {
   }
 
   render () {
-    console.log('state',this.state);
     return (
       <div className="resume">
         <Banner title="My resume" backgroundImage={`url(${bannerImg})`} />
@@ -100,3 +107,28 @@ export default class Resume extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    skills: state.skills,
+    experiences: state.experiences
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSkills () {
+      dispatch(getAllSkills())
+    },
+    getExperiences () {
+      dispatch(getAllExperiences())
+    }
+  }
+}
+
+const Resume = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResumePage)
+
+export default Resume
