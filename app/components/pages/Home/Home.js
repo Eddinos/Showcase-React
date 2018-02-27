@@ -11,17 +11,15 @@ import shanghaiWide from '../../../../tools/images/shanghai_wide.jpg';
 import shanghaiMobile from '../../../../tools/images/shanghai_mobile.jpg';
 import paris from '../../../../tools/images/paris_desktop.jpg';
 import parisMobile from '../../../../tools/images/paris_mobile.jpg';
-import cv from '../../../../tools/cv.pdf';
 import Map from '../../atoms/Map/Map';
 import Contact from '../../organisms/Contact/Contact';
 import Card from '../../atoms/Card/Card';
 import NavLink from '../../atoms/NavLink/NavLink';
 import Duo from '../../bonds/Duo/Duo';
-import axios from 'axios';
 import config from "../../../../config";
 import Banner from '../../atoms/Banner/Banner';
 import { connect } from 'react-redux';
-import { changeColor, getProject, selectProject } from '../../../actions'
+import { getAllProjects } from '../../../actions'
 
 const Who = () => {
   const picture = (<a href="/resume" className="profilePicture">
@@ -112,16 +110,10 @@ class HomePage extends Component {
     };
   }
 
-  componentDidMount () {
-    this.props.getRandomProject();
-    let currentProjectAPI = `${config.projectsAPI}?id=${currentProjectID}`;
-    axios.get(currentProjectAPI)
-    .then((response) => {
-      this.setState({currentProject: response.data.projects})
-    })
-    .catch((error) => {
-      console.log(error.message);
-    })
+  componentWillMount () {
+    if (!this.props.currentProject) {
+      this.props.getProjects();
+    }
   }
 
   setCurrentHometown () {
@@ -138,22 +130,15 @@ class HomePage extends Component {
   }
 
   render () {
+    console.log('props', this.props);
     var bgImg = this.setCurrentHometown();
     return (
       <div className="home">
         <Banner title="Welcome to my sh*t" backgroundImage={`url(${bgImg})`} />
-        <div onClick={this.props.onColorClick} style={{color: this.props.customColor}}>REDUX</div>
-        <select value={this.props.customColor} onChange={this.props.onColorClick}>
-          <option value="red">RED</option>
-          <option value="blue">BLUE</option>
-          <option value="green">GREEN</option>
-          <option value="darksalmon">SALMON</option>
-          <option value="darkmagenta">DEEP PURPLE</option>
-        </select>
 
         <Who />
 
-        <What currentProject={this.state.currentProject}/>
+        <What currentProject={this.props.currentProject}/>
 
         <Contact />
 
@@ -163,20 +148,16 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  let id = Math.floor(Math.random()*state.projects.length)
   return {
-    customColor: state.color
+    currentProject: state.projects[id]
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onColorClick (e) {
-      let color = e ? e.target.value : 'red'
-      dispatch(changeColor(color))
-    },
-    getRandomProject () {
-      let id = Math.floor(Math.random()*4)
-      dispatch(selectProject(id))
+    getProjects () {
+      dispatch(getAllProjects())
     }
   }
 }

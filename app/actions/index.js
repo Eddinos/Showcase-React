@@ -34,7 +34,7 @@ export const selectSingleProject = (id, projects) => ({
 })
 
 export const getAllProjects = () => dispatch => {
-  getProjects().then((data) => {
+  return getProjects().then((data) => {
     dispatch(receiveProjects(data.projects))
   })
 }
@@ -58,5 +58,5 @@ export const getProject = (id) => dispatch => {
 }
 
 export const selectProject = (id) => (dispatch, getState) => {
-  dispatch(selectSingleProject(id, getState().projects))
+  return dispatch(selectSingleProject(id, getState().projects))
 }

@@ -7,12 +7,10 @@ import NavLink from '../../atoms/NavLink/NavLink';
 import Presenter from '../../organisms/Presenter/Presenter';
 import Banner from '../../atoms/Banner/Banner';
 import DataContainer from '../../bonds/DataContainer/DataContainer';
-import axios from 'axios';
 import { Link } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { getProjects } from '../../../api'
 import { connect } from 'react-redux';
-
+import { getAllProjects } from '../../../actions'
 
 const Intro = () => (
   <div className="intro content-text">
@@ -24,9 +22,11 @@ const Intro = () => (
 export class PortfolioPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      proyectos: [],
-      projects: []
+  }
+
+  componentWillMount () {
+    if (this.props.projects.length === 0) {
+      this.props.getProjects();
     }
   }
 
@@ -64,7 +64,6 @@ export class PortfolioPage extends Component {
   }
 
   render () {
-    console.log('Portfolio state', this.props);
     return (
       <div className="portfolio">
         <Banner
@@ -86,8 +85,17 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProjects () {
+      dispatch(getAllProjects())
+    }
+  }
+}
+
 const Portfolio = connect(
   mapStateToProps,
+  mapDispatchToProps
 )(PortfolioPage)
 
 export default Portfolio

@@ -12,7 +12,7 @@ export default function projects (state = [], action) {
 export const getSingleProject = (state = [], action) => {
   switch (action.type) {
     case 'SELECT_SINGLE_PROJECT':
-        return { ...action.projects[action.id] }
+        return [ { ...action.projects[action.id] }]
     default:
       return state
   }

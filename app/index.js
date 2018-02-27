@@ -8,8 +8,6 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
-import { getProjects, setColor } from './reducers'
-import { getAllProjects, receiveProjects } from './actions'
 injectTapEventPlugin();
 
 const middleware = [ thunk ];
@@ -18,8 +16,6 @@ let store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(...middleware)
 )
-
-store.dispatch(getAllProjects())
 
 render(
   <Provider store={store}>
