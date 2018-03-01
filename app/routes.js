@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './components/App/App'
-import Pikachu from './components/Pikachu/Pikachu'
-import Home from './components/Home/Home'
-import Portfolio from './components/Portfolio/Portfolio'
-import Project from './components/Project/Project'
-import Resume from './components/Resume/Resume'
+import Pikachu from './components/pages/Pikachu/Pikachu'
+import Home from './components/pages/Home/Home'
+import Portfolio from './components/pages/Portfolio/Portfolio'
+import Project from './components/organisms/Project/Project'
+import Resume from './components/pages/Resume/Resume'
 
 module.exports = (
   <Route path="/" component={App}>

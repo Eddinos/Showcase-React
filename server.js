@@ -5,9 +5,19 @@ var PORT = process.env.PORT || 8080
 var compression = require('compression');
 import { match, RouterContext } from 'react-router';
 import routes from './app/routes';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import reducers from './app/reducers'
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+
+const middleware = [ thunk ];
+let store = createStore(
+  reducers,
+  applyMiddleware(...middleware)
+)
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -23,7 +33,11 @@ app.get('*', function (req, res) {
       res.redirect(redirect.pathname + redirect.search)
     } else if (props) {
       // if we got props then we matched a route and can render
-      const appHtml = renderToString(<RouterContext {...props}/>)
+      const appHtml = renderToString(
+        <Provider store={store}>
+          <RouterContext {...props}/>
+        </Provider>
+      )
       res.send(renderPage(appHtml))
     } else {
       // no errors, no redirect, we just didn't match anything

@@ -1,0 +1,22 @@
+.reference {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 6px;
+    border-radius: 5px;
+  }
+  @media (max-device-width: 480px) {
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 6px;
+    border-radius: 5px;
+  }
+  .icon {
+    font-size: 2em;
+  }
+  .msg {
+    margin-left: 10px;
+    vertical-align: super;
+    color: black;
+  }
+}

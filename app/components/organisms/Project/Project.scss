@@ -1,0 +1,88 @@
+.project {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'LatoWebSemiBold';
+  @media (max-device-width: 480px) {
+    font-size: 25px;
+  }
+  .title {
+    margin-left: 25%;
+  }
+  .description {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.7em;
+  }
+
+  .progress {
+    margin-top: 125px;
+    @media (max-device-width: 480px) {
+      margin-left: 20%;
+      margin-top: 5%;
+    }
+  }
+
+  .technos {
+    position: absolute;
+    left: 20%;
+    max-width: 30%;
+    bottom: 10%;
+    font-size: 1.3em;
+  }
+
+  .refs {
+    position: absolute;
+    left: 50%;
+    max-width: 30%;
+    @media (max-device-width: 480px) {
+      max-width: 40%;
+      bottom: 12%;
+      font-size: 26px;
+    }
+    .reference {
+      margin: 8px 0;
+    }
+  }
+
+  .arrow {
+    text-decoration: none;
+    color: black;
+    font-size: 3em;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+    &-left {
+      left: 0;
+    }
+    &-right {
+      right: 0;
+    }
+  }
+
+  .noProject {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+  }
+
+  &-display {
+    position: relative;
+    height: 700px;
+    overflow-x: hidden;
+    @media (max-device-width: 480px) {
+      height: 93vh;
+    }
+  }
+}

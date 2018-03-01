@@ -1,0 +1,140 @@
+@import "../../../../tools/fonts/Lato/latofonts.css";
+@import "../../../../tools/fonts/Icomoon/style.css";
+@import "../../../../theme/variables.scss";
+
+.container {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-variant: small-caps;
+  font-family: 'LatoWebSemibold';
+  font-size: 3em;
+}
+
+.content {
+  padding: 25vh 0 25vh 0;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+}
+
+.home {
+  &-banner {
+    background: $purple;
+    // background: linear-gradient(to bottom left, $purple 20%, $orange);
+    height: 100vh;
+  }
+  .banner {
+    @media (max-device-width: 640px) {
+      background-position-x: 50%;
+    }
+  }
+
+  &-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 9;
+  }
+
+  &-city {
+    opacity: 0;
+    &.is-active {
+      opacity: 1;
+    }
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s linear;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &-who {
+    color: $green;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .profilePicture {
+      border-radius: 50%;
+      height: 400px;
+      width: auto;
+      img {
+        border-radius: inherit;
+        height: inherit;
+      }
+    }
+    .content-title {
+      font-family: 'Galada';
+      font-variant: normal;
+      transform: rotate(-15deg);
+      font-size: 4em;
+      margin: 0;
+    }
+    .content-text {
+      font-family: 'LatoWebSemiBold';
+      font-size: 2em;
+      margin-top: 10%;
+    }
+    &__bio {
+      max-width: 600px;
+    }
+
+    @media (max-device-width: 480px) {
+      padding: 10vh 0;
+      &__bio {
+        padding-top: 10vh;
+        .content-text {
+          font-size: 3em;
+        }
+      }
+    }
+  }
+
+  &-what {
+    background-color: #f2f2f2;
+    .content-text {
+      margin-bottom: 12%;
+      h4 {
+        margin: 0;
+      }
+      p, .moreButton {
+        font-size: 75%;
+      }
+      .moreButton {
+        border: solid 2px black;
+        margin: 0 auto;
+        padding: 15px 8px;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        transition: background-color .25s linear;
+        &:hover {
+          filter: invert(100%);
+          background-color: $second;
+        }
+      }
+    }
+
+    @media (max-device-width: 480px) {
+      padding: 15vh 0;
+      .content-text {
+        p, .moreButton {
+          font-size: 100%;
+        }
+      }
+    }
+  }
+
+  &-contact {
+
+  }
+}

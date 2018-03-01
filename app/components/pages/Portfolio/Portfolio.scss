@@ -1,0 +1,51 @@
+.portfolio {
+  .banner {
+    filter: grayscale(1);
+    background-size: cover;
+    @media (max-device-width: 640px) {
+      background-position-x: 58%;
+    }
+  }
+}
+
+.header-caption {
+  position: absolute;
+  bottom: 30%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.intro {
+  background-color: #f2f2f2;
+  padding: 7% 0;
+  font-size: 1.5em;
+  font-variant: normal;
+  h4 {
+    font-weight: bold;
+  }
+}
+
+.swap-enter {
+  opacity: 0.01;
+  transform: translateX(-15em);
+  transition: all .5s ease-in;
+}
+
+.swap-enter.swap-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swap-leave {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all .5s ease-in;
+}
+
+.swap-leave.swap-leave-active {
+  opacity: 0;
+  transform: translateX(15em);
+}
