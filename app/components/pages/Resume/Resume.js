@@ -44,19 +44,12 @@ export class ResumePage extends Component {
   }
 
   componentDidMount() {
-    let newState = {}
-    this.props.getSkills();
-    this.props.getExperiences();
-    console.log(this.props);
-    // let skillsP = getSkills().then(data => {
-    //   newState.skills = data;
-    // })
-    let xpP = getXp().then(data => {
-      newState.experiences = data;
-    })
-    Promise.all([ xpP]).then(() => {
-      this.setState(newState)
-    })
+    if (this.props.experiences.length === 0) {
+      this.props.getExperiences();
+    }
+    if (this.props.skills.length === 0) {
+      this.props.getSkills();
+    }
   }
 
   createSkillsComponents() {

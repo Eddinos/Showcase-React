@@ -68,7 +68,7 @@ function renderPage(appHtml) {
       <meta charset="utf-8">
       <title>Eddine shows off</title>
       <link rel="icon" type="img/ico" href="/ed.ico">
-      <link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
+      <!--<link href='//fonts.googleapis.com/css?family=Galada' rel='stylesheet'>-->
     </head>
     <body>
       <div id='root'/>
