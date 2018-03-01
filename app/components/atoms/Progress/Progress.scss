@@ -1,37 +1,46 @@
 @import "../../../../theme/variables.scss";
-
-.progress_bar {
-  width:400px;
-  height:30px;
-  margin-bottom:5px;
-  background-color: #eee;
-  border-radius: 2px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  transform: rotate(-90deg);
-
-  .progress_bar_content {
-    width:0%;
-    height:100%;
-    background-image:
-	   -webkit-linear-gradient(-45deg,
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%,
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top,
-	                           rgba(255, 255, 255, .25),
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left, $purple, $orange);
-
+.progress {
+  position: relative;
+  &_bar {
+    width:400px;
+    height:30px;
+    margin-bottom:5px;
+    background-color: #eee;
     border-radius: 2px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-    animation: animate-stripes 7s linear 30;
-  }
-}
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    transform: rotate(-90deg);
+    @media (max-device-width: 480px) {
+      transform: none;
+    }
+    &_content {
+      width:0%;
+      height:100%;
+      background-image:
+  	   -webkit-linear-gradient(-45deg,
+  	                           transparent 33%, rgba(0, 0, 0, .1) 33%,
+  	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+  	   -webkit-linear-gradient(top,
+  	                           rgba(255, 255, 255, .25),
+  	                           rgba(0, 0, 0, .25)),
+  	   -webkit-linear-gradient(left, $purple, $orange);
 
-.progress_value {
-  position: absolute;
-    top: 0;
-    transform: rotate(90deg);
-    left: -70px;
+      border-radius: 2px;
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+      animation: animate-stripes 7s linear 30;
+    }
+  }
+
+  &_value {
+    position: absolute;
+      top: 0;
+      transform: rotate(90deg);
+      left: -5em;
+      @media (max-device-width: 480px) {
+        transform: none;
+        left: 0;
+        top: 2em;
+      }
+  }
 }
 
 @keyframes animate-stripes {

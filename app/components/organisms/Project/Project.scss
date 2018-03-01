@@ -4,6 +4,9 @@
   height: 100%;
   width: 100%;
   font-family: 'LatoWebSemiBold';
+  @media (max-device-width: 480px) {
+    font-size: 25px;
+  }
   .title {
     margin-left: 25%;
   }
@@ -11,25 +14,37 @@
     max-width: 60%;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.5em;
+    font-size: 1.7em;
   }
 
-  .progress_bar {
-    position: relative;
-    top: 0px;
-    right: 35px;
+  .progress {
+    margin-top: 125px;
+    @media (max-device-width: 480px) {
+      margin-left: 20%;
+      margin-top: 5%;
+    }
   }
 
   .technos {
     position: absolute;
     left: 20%;
     max-width: 30%;
+    bottom: 10%;
+    font-size: 1.3em;
   }
 
   .refs {
     position: absolute;
-    left: 65%;
+    left: 50%;
     max-width: 30%;
+    @media (max-device-width: 480px) {
+      max-width: 40%;
+      bottom: 12%;
+      font-size: 26px;
+    }
+    .reference {
+      margin: 8px 0;
+    }
   }
 
   .arrow {
@@ -60,5 +75,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3em;
+  }
+
+  &-display {
+    position: relative;
+    height: 700px;
+    overflow-x: hidden;
+    @media (max-device-width: 480px) {
+      height: 93vh;
+    }
   }
 }

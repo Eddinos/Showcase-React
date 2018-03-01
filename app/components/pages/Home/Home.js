@@ -130,7 +130,6 @@ class HomePage extends Component {
   }
 
   render () {
-    console.log('props', this.props);
     var bgImg = this.setCurrentHometown();
     return (
       <div className="home">

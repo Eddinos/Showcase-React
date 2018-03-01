@@ -32,7 +32,7 @@ export default class Project extends Component {
   getHere () {
     var project = findDOMNode(this);
     var scrollInterval = setInterval(() => {
-      window.scrollTo(0, window.scrollY+20);
+      window.scrollTo(0, window.scrollY+10);
       if(project.getBoundingClientRect().bottom - window.innerHeight <= 0)
       {
         clearInterval(scrollInterval)

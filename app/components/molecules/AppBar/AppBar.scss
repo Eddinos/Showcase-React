@@ -1,10 +1,11 @@
 // TODO Refactor this entire file/component
+@import "../../../../theme/variables.scss";
 
 .nav-button {
   font-variant: small-caps;
   font-family: 'LatoWebSemibold';
   font-size: 1.2em;
-  color: grey;
+  color: $clearBlue;
   text-decoration: none;
   padding: 5px;
   border-style: solid;

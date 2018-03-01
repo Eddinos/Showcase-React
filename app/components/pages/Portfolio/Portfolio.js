@@ -37,7 +37,7 @@ export class PortfolioPage extends Component {
         <Presenter>
           {this.props.projects.map((item, key) => {
               return (
-                <Link to={"/portfolio/project/" + item.id + "#project"} key={key}>
+                <Link to={"/portfolio/project/" + item.id} key={key}>
                   <Card
                     source={item.media}
                     title={item.title}

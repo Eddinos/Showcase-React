@@ -16,7 +16,7 @@ const style = {
   icon: {
     width: 48,
     height: 48,
-    color: 'grey'
+    color: '#aaccff'
   },
   medium: {
     width: 96,
@@ -60,7 +60,7 @@ export default class AppBar extends Component {
         newState.barStyle.height = '9em';
       }
       else {
-        newState.barStyle.bgColor = 'rgba(0, 255, 255, 0.8)';
+        newState.barStyle.bgColor = '#1d2266dd';
         // Cte media query lulz
         var height = screen.width < 480 ? '6em' : '3em';
         newState.barStyle.height = height;

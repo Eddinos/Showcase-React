@@ -31,10 +31,10 @@ export default class Reference extends Component {
 
   render () {
     return (
-      <div className={`reference ${this.props.className || ''}`}>
+      <a href={this.state.url} target="_blank" rel="noopener" className={`reference ${this.props.className || ''}`}>
         <span className={`icon icon-${this.state.iconType}`}></span>
-        {this.state.url ? (<a href={this.state.url} className="msg">{this.state.goMsg}</a>) : (<span className="msg">{this.state.isEmptyMsg}</span>)}
-      </div>
+        {this.state.url ? (<span className="msg">{this.state.goMsg}</span>) : (<span className="msg">{this.state.isEmptyMsg}</span>)}
+      </a>
     )
   }
 }
